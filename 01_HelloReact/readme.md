@@ -62,7 +62,7 @@ code .
 ```
 npm install
 ```
-7. Open up local host
+7. Open up local host to preview your code
 ```
 npm run dev
 ```
