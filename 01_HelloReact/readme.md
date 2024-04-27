@@ -45,7 +45,6 @@ For this lecture, we will be using VS Code, but first, you need to install [Node
 1. Open your terminal and install Vite in a folder on your machine. (note: `wtf-react` is the name of our folder here)
 ```
 npm create vite@latest wtf-react
-
 ```
 
 2. Select the `React` framework
@@ -71,6 +70,15 @@ npm install
 ```
 npm run dev
 ```
+![1-1](./img/1-4.png)
+
+Copy and paste the local host link in your browser, you should see a page like below:
+
+![1-1](./img/1-5.png)
+
+# Summary
+
+In the first lecture, we introduced what React is and why we should learn it. We also introduced the React development tools and set up our code environment. Next, we continue our React journey!
 
 
 
