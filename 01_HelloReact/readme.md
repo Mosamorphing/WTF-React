@@ -42,7 +42,7 @@ For this lecture, we will be using VS Code, but first, you need to install [Node
 
 # Installation 
 
-1. Install Vite in a folder on your machine. (note: `wtf-react` is the name of our folder here)
+1. Open your terminal and install Vite in a folder on your machine. (note: `wtf-react` is the name of our folder here)
 ```
 npm create vite@latest wtf-react
 
@@ -50,7 +50,10 @@ npm create vite@latest wtf-react
 
 2. Select the `React` framework
 3. Select the `JavaScript` variant
-4. Open the new folder you just created with
+
+![1-1](./img/1-1.png)
+
+5. Open the new folder you just created with
 ```
 cd wtf-react
 ```
@@ -58,6 +61,8 @@ cd wtf-react
 ```
 code .
 ```
+![1-1](./img/1-2.png)
+
 6. Open your VS Code terminal and install the dependencies
 ```
 npm install
