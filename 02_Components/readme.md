@@ -30,7 +30,7 @@ function Contributors () {
 
 1. The `function` prefix allows us to name a component. For example, the above component is named `Contributors`. 
 
-2. It is important to markup the function to avoid syntax errors.
+2. React's JSX syntax combines the simplicity of HTML-like markup with JavaScript, allowing you to create components easily, like an <img /> tag with attributes.
 
 ```javascript
   return (
