@@ -46,7 +46,7 @@ function Contributors () {
 
 1. To reuse the above component, we use the `export default` prefix to identify the function. The prefix allows us to nest it or import it into another component with ease. 
 
-In the example below, the `Contributors` component is reused in the `Catalogue` component with 3 `Contributors ` components. 
+In the example below, the `Contributors` component is reused in the `Catalogue` component with 4 `Contributors ` components. 
 
 ```javascript
 function Contributors() {
@@ -62,9 +62,10 @@ export default function Catalogue() {
   return (
     <section>
       <h1>WTF Top Contributors</h1>
-      <Contributors />
-      <Contributors />
-      <Contributors />
+      <Contributors/>
+      <Contributors/>
+      <Contributors/>
+      <Contributors/>
     </section>
   );
 }
