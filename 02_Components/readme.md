@@ -19,7 +19,6 @@ In React, Components are reusable pieces of code that represent a part of a user
 2. With the `function` prefix, we can name the function we want to build into a component.
 
 ```
-js
 function Biography() {}
 ```
 Note: we have just defined the function here as 'Biography', it could be anything. 
@@ -27,7 +26,6 @@ Note: we have just defined the function here as 'Biography', it could be anythin
 3. It is important to markup the function to avoid syntax errors.
 
 ```
-js
 return (
   <div>
     <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />;
