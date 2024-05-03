@@ -2,6 +2,8 @@
 
 WTF React tutorial helps newcomers get started with React quickly.
 
+**WTF Academy Community**: [Official Website wtf.academy](https://wtf.academy) | [Discord](https://discord.gg/5akcruXrsk)
+
 **Twitter**: [@WTFAcademy_](https://twitter.com/WTFAcademy_) | Compiled by [@Mofasasi](https://twitter.com/mofasasi)
 
 ---
