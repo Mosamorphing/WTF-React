@@ -1,3 +1,8 @@
+.Contributors {
+  display: flex;
+  margin: 10px;
+}
+
 .Contributors img {
   width: 150px; /* Adjust the width to your desired size */
   height: auto; /* Maintain aspect ratio */
