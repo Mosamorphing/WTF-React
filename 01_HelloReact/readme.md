@@ -42,7 +42,7 @@ Other popular React community editors include [WebStorm](https://www.jetbrains.c
 
 # Illustration with [Code Pen](https://codepen.io)
 
-```
+```javascript
 <div id="root"></div>
 
 <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
@@ -58,11 +58,10 @@ Other popular React community editors include [WebStorm](https://www.jetbrains.c
 
 We can make the code cleaner by adding the scripts in the JS settings on code pen, leaving us with 
 
-```
+```javascript
 HTML
 <div id="root"></div>
 
-JS
 const hello = React.createElement("h1", {}, "Hello React");
   ReactDOM.render(hello, document.getElementById("root"));
 ```
