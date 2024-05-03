@@ -54,7 +54,7 @@ Other popular React community editors include [WebStorm](https://www.jetbrains.c
 
 ![1-1](./img/1-3.png)
 
-For this lecture, we will be using VS Code, but first, you need to install [Node.js](https://nodejs.org/zh-cn/download/) into your machine so that the following installation command can work. 
+As we advance, we will be using VS Code, but first, you need to install [Node.js](https://nodejs.org/zh-cn/download/) into your machine so that the following installation command can work. 
 
 # Installation 
 
