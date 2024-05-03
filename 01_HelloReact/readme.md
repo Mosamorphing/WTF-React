@@ -52,7 +52,21 @@ Other popular React community editors include [WebStorm](https://www.jetbrains.c
  </script>
 ```
 
-![1-1](./img/1-3.png)
+![1-1](./img/1-3.png) 
+
+We can make the code cleaner by adding the scripts in the JS settings on code pen, leaving us with 
+
+```
+HTML
+<div id="root"></div>
+
+JS
+const hello = React.createElement("h1", {}, "Hello React");
+  ReactDOM.render(hello, document.getElementById("root"));
+```
+
+![1-1](./img/1-6.png) 
+
 
 As we advance, we will be using VS Code, but first, you need to install [Node.js](https://nodejs.org/zh-cn/download/) into your machine so that the following installation command can work. 
 
