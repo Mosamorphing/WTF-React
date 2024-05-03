@@ -59,9 +59,7 @@ Other popular React community editors include [WebStorm](https://www.jetbrains.c
 We can make the code cleaner by adding the scripts in the JS settings on code pen, leaving us with 
 
 ```javascript
-HTML
 <div id="root"></div>
-
 const hello = React.createElement("h1", {}, "Hello React");
   ReactDOM.render(hello, document.getElementById("root"));
 ```
