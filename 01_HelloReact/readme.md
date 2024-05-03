@@ -36,7 +36,23 @@ Learning React opens up a wide range of opportunities for developers and provide
 
 [VS Code](https://code.visualstudio.com/) is one of the most popular code editors today. Its configurability allows users to add features like JSX and TypeScript support, syntax highlighting, and autocomplete. 
 
-Other popular React community editors include [WebStorm](https://www.jetbrains.com/webstorm/), [Sublime Text](https://www.sublimetext.com/), and [Vim](https://www.vim.org/), each offering unique features for efficient JavaScript development.
+Other popular React community editors include [WebStorm](https://www.jetbrains.com/webstorm/), [Sublime Text](https://www.sublimetext.com/), [Code Pen](https://codepen.io),  and [Vim](https://www.vim.org/), each offering unique features for efficient JavaScript development.
+
+# Illustration with [Code Pen](https://codepen.io)
+
+```
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+<script>
+  const hello = React.createElement("h1", {}, "Hello React");
+  ReactDOM.render(hello, document.getElementById("root"));
+ </script>
+```
+
+![1-1](./img/1-3.png)
 
 For this lecture, we will be using VS Code, but first, you need to install [Node.js](https://nodejs.org/zh-cn/download/) into your machine so that the following installation command can work. 
 
