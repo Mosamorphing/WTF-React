@@ -72,3 +72,7 @@ export default function Catalogue() {
 ![2-1](./img/2-1.png) 
 
 In other words, `Catalogue` is a parent component and `Contributors` is a child component. 
+
+# Summary
+
+In this lecture, we introduced Components, one of the core concepts of React. We looked at a breakdown of components and how we can reuse them. We also touched on how we can nest them in other components. 
