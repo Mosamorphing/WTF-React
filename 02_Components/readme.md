@@ -14,7 +14,7 @@ In React, Components are reusable pieces of code that represent a part of a user
 
 #Breakdown of a Component
 
-```
+```javascript
 function Contributors () {
   return (
     <img
@@ -29,7 +29,7 @@ function Contributors () {
 
 2. It is important to markup the function to avoid syntax errors.
 
-```
+```javascript
   return (
     <img
       src="https://pbs.twimg.com/profile_images/1463080286665666564/ubE1IWCT_400x400.jpg"
@@ -44,7 +44,7 @@ function Contributors () {
 
 In the example below, the `Contributors` component is reused in the `Catalogue` component with 3 `Contributors ` components. 
 
-```
+```javascript
 function Contributors() {
   return (
     <img
