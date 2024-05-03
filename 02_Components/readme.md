@@ -61,7 +61,7 @@ function Contributors() {
 export default function Catalogue() {
   return (
     <section>
-      <h1>WTF Top Contributors</h1>
+      <h1>WTF Academy Top Contributors</h1>
       <Contributors/>
       <Contributors/>
       <Contributors/>
