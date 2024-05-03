@@ -94,7 +94,7 @@ Copy and paste the local host link in your browser, you should see a page like b
 
 # Summary
 
-In the first lecture, we introduced what React is and why we should learn it. We also introduced the React development tools and set up our code environment. Next, we continue our React journey!
+In the first lecture, we introduced what React is and why we should learn it. We also introduced the React development tools, wrote our first react code, "Hello React" in and online web editor, and then we set up our code environment in VS Code. Next, we continue our React journey!
 
 
 
