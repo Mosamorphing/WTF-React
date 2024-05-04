@@ -1,4 +1,4 @@
-# WTF React minimalist tutorial: 2. Components
+![image](https://github.com/Mosamorphing/WTF-React/assets/121625762/984c78e2-dc69-4d38-acb8-815472657c1f)# WTF React minimalist tutorial: 2. Components
 
 WTF React tutorial helps newcomers get started with React quickly.
 
@@ -74,6 +74,42 @@ export default function Catalogue() {
 
 In other words, `Catalogue` is a parent component and `Contributors` is a child component. 
 
+# Exporting and Importing Components
+
+Imagine you want to redesign your app's landing screen to show a list of courses available on WTF Academy instead of top contributors. It would be smart to separate components like `Contributors` and `Catalogue` from the main component file. You can separate these components by:
+
+1. Creating a new JSX file to put the existing components
+2. Export your function component from the new file (using either `default` or `named` exports
+3. Import it into the file where you will use the component (typically your root/main JS file)
+
+![2-3](./img/2-3.png) 
+
+Note: `Catalogue.jsx` now defines the `Contributors` component which is only used within the same file and is not exported while the `Catalogue` component is exported.
+Also, `App.jsx` imports `Catalogue` from `Catalogue.jsx` and exports the root `App` component as a default export.
+
+But what if you want to export and import multiple components from and into the same file? This is possible by using the `default export` and `named export`. However, a file can only have one default export but many named exports. Let's see how: 
+
+From the above code, let's imagine that we want to import one contributor into `App.jsx`.
+
+1. We make sure we `export` the function from our `Catalogue.jsx` (this becomes our named export while the other remains a default)
+2. In our `App.jsx` file, we import the named export with the curly brackets like so:
+   
+```javascript
+import { Contributors } from './Catalogue';
+```
+3. Render `Contributors` from the `App.jsx` components
+   
+```javascript
+export default function App() {
+  return (
+    <Contributors/>
+  );
+}
+```
+![2-4](./img/2-4.png) 
+
+Try rendering `<Contributors/>` and `Catalogue` and see the difference in your local host. 
+
 # Summary
 
-In this lecture, we introduced Components, one of the core concepts of React. We looked at a breakdown of components and how we can reuse them. We also touched on how we can nest them in other components. 
+In this lecture, we introduced Components, one of the core concepts of React. We looked at a breakdown of components and how we can reuse them. We also touched on how to export, import and how to nest them in other components. 
