@@ -1,4 +1,4 @@
-![image](https://github.com/Mosamorphing/WTF-React/assets/121625762/984c78e2-dc69-4d38-acb8-815472657c1f)# WTF React minimalist tutorial: 2. Components
+# WTF React minimalist tutorial: 2. Components
 
 WTF React tutorial helps newcomers get started with React quickly.
 
