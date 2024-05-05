@@ -1,4 +1,4 @@
-# WTF React minimalist tutorial: 2. Markup with JSX
+# WTF React minimalist tutorial: 3. Markup with JSX
 
 WTF React tutorial helps newcomers get started with React quickly.
 
@@ -53,3 +53,4 @@ export default function TodoList() {
 );
 }
 ```
+![3-1](./img/3-1.png) 
