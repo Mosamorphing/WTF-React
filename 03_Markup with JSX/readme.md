@@ -54,3 +54,26 @@ export default function TodoList() {
 }
 ```
 ![3-1](./img/3-1.png) 
+
+For HTML to be successfully written in JSX, the following conditions must be met:
+
+1. JSX expressions must have one parent element.
+This means that your HTML code must be wrapped in a single parent tag. From the example above, we see an opening tag `<div>` and its closing tag `</div>`. it can also be written as `<>` and `</>`.
+
+2. The use of camelCase
+"camelCase" is a naming style in programming where the first letter of each word (except the first word) is capitalized. 
+
+The reason for using `className` instead of `class` in React has to do with JavaScript and the [Document Object Model (DOM)](https://developer.mozilla.org/en-US/docs/Web/API/Element/className).
+
+In JavaScript, `class` is a reserved keyword used for defining classes in object-oriented programming. However, in HTML, `class` is used to specify CSS classes for styling elements.
+
+When React code gets compiled and transformed into JavaScript via JSX, using `class` directly would cause conflicts with JavaScript's `class` keyword. To avoid this conflict, React uses `className` instead of `class` for specifying CSS classes in JSX.
+
+This is a necessity to avoid naming conflicts and maintain compatibility between JavaScript and HTML within the context of React applications.
+
+_fun fact:  The name "camelCase" comes from the appearance of the "humps" created by the capital letters, resembling a camel's back._
+
+# Summary 
+
+In this lecture, we take a look at Markups with JSX and the conditions that need to be met to convert HTML into JavaScript
+
