@@ -12,7 +12,7 @@ WTF React tutorial helps newcomers get started with React quickly.
 
 In React's JSX, you can use JavaScript code inside curly brackets {} to embed dynamic values or execute JavaScript logic within JSX elements. 
 
-# Expression 01: Passing strings with quotes
+# 1. Passing strings with quotes
 
 By now, you should be familiar with this because we've used this in previous lessons. This is simply when you pass a string attribute to JSX, putting it in single or double quotes like below:
 
@@ -50,7 +50,7 @@ export default function Avi() {
 
 Notice the difference between `className="avi"`, which specifies an `"avi"` CSS class name that makes the image round, and `src={avatar}` which reads the value of our variable `avi`. That is possible because curly brackets allow us to work with JavaScript within our markup!
 
-# Expression 02: Expressions with curly brackets 
+# 2: Expressions with curly brackets 
 
 Curly brackets allow us to pass JavaScript expressions in JSX. In the illustration below, we declare a variable `name` and then embed it with curly braces inside the `<h1></h1>` tag.
 
@@ -85,3 +85,6 @@ export default function TodoList() {
 ```
 ![4-3](./img/4-3.png) 
 
+Note: The two ways you can use a curly bracket are:
+1. Inside an HTML tag like so: `<h1>{name}'s Todo List</h1>`
+2. As attributes following the `=` sign like so: `alt={description}`
