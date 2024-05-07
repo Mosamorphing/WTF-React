@@ -95,13 +95,13 @@ Double curly brackets are used to pass objects in JSX but because objects are de
 
 An object looks like this: 
 ```javascript
-`{name: "Amazing Ang", contributions: 23}`
+{name: "Amazing Ang", contributions: 23}
 ```
 In JSX, it will look like this 
 ```javascript
-contributor= {{name: "Amazing Ang", contributions: 23}}`
+contributor= {{name: "Amazing Ang", contributions: 23}}
 ```
-Note: The double curly brackets are primarily used when passing inline styles (CSS) as JavaScript objects within JSX elements. For instance:
+Also, the double curly brackets are often used when passing inline styles (CSS) as JavaScript objects within JSX elements. For instance:
 
 ```javascript
 export default function TodoList() {
