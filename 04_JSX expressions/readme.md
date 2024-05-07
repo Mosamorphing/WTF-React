@@ -95,7 +95,7 @@ Double curly brackets are used to pass objects in JSX but because objects are de
 
 An object looks like this: 
 ```javascript
-`{name: "Amazing Ang", contributions: 23}`.
+`{name: "Amazing Ang", contributions: 23}`
 ```
 In JSX, it will look like this 
 ```javascript
@@ -162,4 +162,4 @@ In this lecture, we examined JSX expressions; passing string in quotes, using si
 
 # Execrise
 
-Take some time to break the code and see what works and why it does. If you run into a problem, that means you're doing something right! Keep at it. 
+Take some time to break the code and see what works and why it works. If you run into a problem, that means you're doing something right! Keep at it. 
