@@ -88,3 +88,78 @@ export default function TodoList() {
 Note: The two ways you can use a curly bracket are:
 1. Inside an HTML tag like so: `<h1>{name}'s Todo List</h1>`
 2. As attributes following the `=` sign like so: `alt={description}`
+
+# 3: Expressions with double curly brackets 
+
+Double curly brackets are used to pass objects in JSX but because objects are denoted with curly brackets, there is a need to wrap them in another pair of curly braces. 
+
+An object looks like this: 
+```javascript
+`{name: "Amazing Ang", contributions: 23}`.
+```
+In JSX, it will look like this 
+```javascript
+contributor= {{name: "Amazing Ang", contributions: 23}}`
+```
+Note: The double curly brackets are primarily used when passing inline styles (CSS) as JavaScript objects within JSX elements. For instance:
+
+```javascript
+export default function TodoList() {
+  return (
+    <ul style={{
+      backgroundColor: 'white',
+      color: 'black'
+    }}>
+      <li>Retrieve hacked funds from the Dark Forest</li>
+      <li>Attend PKU Blockchain Fireside chat</li>
+      <li>Send an update to WTF Academy Discord</li>
+    </ul>
+  );
+}
+```
+![4-4](./img/4-4.png) 
+
+# What more?
+
+You can also have an object inside another object, referencing them with curly brackets like so:
+
+```javascript
+import './App.css';
+
+const avatar = {
+  name: "Amazing Ang",
+  theme: {
+    backgroundColor: "black",
+    color: "white"
+  }
+};
+
+export default function TodoList () {
+  return (
+    <div style={avatar.theme}>
+      <h1>{avatar.name}&apos;s Todos</h1>
+      <img
+className="avi"
+        src="https://pbs.twimg.com/profile_images/1463080286665666564/ubE1IWCT_400x400.jpg"
+        alt="Amazing Ang"
+        />
+        <ul>
+      <li>Retrieve hacked funds from the Dark Forest</li>
+      <li>Attend PKU Blockchain Fireside chat</li>
+      <li>Send an update to WTF Academy Discord</li>
+    </ul>
+  </div>
+);
+}
+```
+![4-5](./img/4-5.png) 
+
+In the above example, the `avatar` object contains a `name` string and a `theme` object. 
+
+# Summary 
+
+In this lecture, we examined JSX expressions; passing string in quotes, using single & double curly brackets, and we also examined how to nest an object inside another object. 
+
+# Execrise
+
+Take some time to break the code and see what works and why it does. If you run into a problem, that means you're doing something right! Keep at it. 
