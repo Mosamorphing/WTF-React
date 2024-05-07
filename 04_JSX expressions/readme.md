@@ -162,4 +162,4 @@ In this lecture, we examined JSX expressions; passing string in quotes, using si
 
 # Execrise
 
-Take some time to break the code and see what works and why it works. If you run into a problem, that means you're doing something right! Keep at it. 
+Take some time to break the code and see what works and why it works. If you run into a problem, that means you're doing something right. Keep at it!
