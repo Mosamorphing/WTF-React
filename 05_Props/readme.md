@@ -30,7 +30,7 @@ export default function User() {
   );
 }
 ```
-There are defined props you can pass through the `<img>` tag. [See here](https://www.w3.org/TR/html52/semantics-embedded-content.html#the-img-element)
+There are defined props you can pass through the `<img>` tag, [See here](https://www.w3.org/TR/html52/semantics-embedded-content.html#the-img-element).
 However, you can also pass props to your own components and customize them. For example:
 
 ```javascript
