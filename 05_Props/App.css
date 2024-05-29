@@ -1,0 +1,8 @@
+* {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+.avi {
+  border-radius: 100%; 
+  border: 1px solid black;
+}
