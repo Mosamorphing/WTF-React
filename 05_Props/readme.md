@@ -14,14 +14,17 @@ Props in React are properties passed from parent components to child components,
 
 ```javascript
 import './App.css';
-function Avi() {
+
+function Avi({ imageUrl, size }) {
   return (
-  <img
-  className="Avi"
-  src="https://pbs.twimg.com/profile_images/1463080286665666564/ubE1IWCT_400x400.jpg"
-  alt="Amazing Ang"
-  />
-);
+    <img
+      className="avi"
+      src={imageUrl}
+      alt="Avatar"
+      width={size}
+      height={size}
+    />
+  );
 }
 
 export default function User() {
@@ -36,9 +39,19 @@ However, you can also pass props to your own components and customize them. For 
 ```javascript
 export default function User() {
   return (
-  <Avi
-    person={{ name: 'Amazing Ang', imageId: '1bX5QH6' }}
-    size={100}
-    />
-);
+    <div>
+      <Avi
+        size={150}
+        imageUrl="https://pbs.twimg.com/profile_images/1463080286665666564/ubE1IWCT_400x400.jpg"
+      />
+      <Avi
+        size={100}
+        imageUrl="https://pbs.twimg.com/profile_images/1463080286665666564/ubE1IWCT_400x400.jpg"
+      />
+      <Avi
+        size={80}
+        imageUrl="https://pbs.twimg.com/profile_images/1463080286665666564/ubE1IWCT_400x400.jpg"
+      />
+    </div>
+  );
 }
