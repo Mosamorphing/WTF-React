@@ -55,3 +55,13 @@ export default function User() {
     </div>
   );
 }
+```
+
+Think of Props like a switch you can adjust. They're similar to arguments you pass into functions. In React, components take props as their only input. So, when you define a component function, you're essentially creating a function that takes props as its argument.
+
+# Passing JSX as children components
+
+In React, when you place elements or components within a JSX tag, the parent component will automatically receive these nested elements or components as a special prop called `children`.
+To illustrate, if you nest an `<Avatar />` component inside a `<Card>` component, like so:
+
+
