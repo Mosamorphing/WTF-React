@@ -113,12 +113,97 @@ export default SimpleCounter;
 For everytime we click on the increment button, we see immediately on the screen that the count increases. Using setCount ensures that React knows about the change and re-renders the component. When setCount is called, React automatically re-renders the component, updating the displayed count value in the <p> element.
 Just like we update a number in this case, the state setter can manipulate a string, object, even arrays as well.
 
+You might be wondering, how does this apply in an application that people use in their day-to-day activities, because in reality there is no one who wants to use an app that just makes them click on a button and then add a number to an existing number. This brings us to a more robust use of state.
+
+Here we will learn how to use state to store a value of an input field, which I believe every app in this world has, whether during authentication or to collect users' data. Enough of the long talks, let us dive into it!
+
+# 1. Import and initialize the state
+
+Just like we did above, we have to first inport and initialize the state.
+
+```javascript
+import { useState } from "react";
+
+import "./App.css";
+
+const SimpleForm = () => {
+  const [form, setForm] = useState({ firstName: "", email: "" });
+
+  return <></>;
+};
+
+export default SimpleForm;
+```
+
+Here we made a state called form, which has a setter function called setForm, and the initial values of this form are store in an object, which has a firstName and an email.
+
+# 2. Make a change handler
+
+If you are coming from the knowledge of vanilla javascript (which I believe you are), you should know that handling forms can be a pain a pain, or well, maybe for me.
+A change handler helps us manipulate our state better. See it in action here:
+
+```javascript
+import { useState } from "react";
+
+import "./App.css";
+
+const SimpleForm = () => {
+  const [form, setForm] = useState({ firstName: "", email: "" });
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  console.log("the form values are", form);
+
+  return (
+    <>
+      <input
+        className="input__field"
+        type="text"
+        name="firstName"
+        value={form?.firstName}
+        onChange={handleChange}
+      />
+      <input
+        className="input__field"
+        type="email"
+        name="email"
+        value={form?.email}
+        onChange={handleChange}
+      />
+    </>
+  );
+};
+export default SimpleForm;
+```
+
+Relaaaaaaaax! All we did here was:
+
+1. write the change handler such that we are able to track each character that the user puts in using the input field.
+   We did this by first spreading whatever we find inside of the form using the spread operator (...).
+2. Then since we have more than one value to assign (firstName and email), we say, e.target.name which is defined in each case as 'firstName' and 'email' respectively, we need to make the key-value pair in this case to then be the name we have in our initial state ( firstName and email) to be the name we have in the input attribute NAME. This means that we are updating our form object this way:
+
+```javascript
+setForm({
+  firstName: "*firstName characters go in here*",
+  email: "*email characters go in here*",
+});
+```
+
+_Name_ is an attribute of the input field that identifies the form control. It is used to match the input field with its corresponding property in the state object.
+
+_value_ is the current value of the input field. In React, the value of the input field is typically controlled by state, meaning it is derived from the state variable and updated when the state changes, such that the initial value of the firstNAME is an empty string and as we press characters, the value gets updated using the setter function HANDLECHANGE and then as a result, we have an updated _value_ per time. It ensures that the input field always reflects the current state of the application.
+
+_handleChange_ is an event handler function that is called whenever the value of the input field changes. It updates the state with the new value entered by the user. This function is passed to the onChange event of the input field, allowing it to respond to user input.
+
+3. We went ahead to console our form to be sure that our code works.
+
 It is worthy of note that when a React application reloads the page, the state resets to its default values because React is a client-side library. This means that all the JavaScript code, including the React components and their state, runs in the browser after being downloaded from the server. Therefore, on a page reload, React starts fresh, and all state information is lost unless intentionally persisted and rehydrated using techniques like browser storage, server-side rendering, or other state management libraries.
 
 //how to update objects
 // how to update arrays as well.
 // using state to update forms.
-
 
 # Summary
 
@@ -127,3 +212,7 @@ In this lecture, we examined React state; the concept of React hooks, why we use
 # Exercise
 
 Initiate a state as an empty string, then go ahead to update the state value by setting it to your name. Simple right? Now go ahead and get your hands dirty.
+
+```
+
+```
