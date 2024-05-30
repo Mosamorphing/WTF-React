@@ -1,0 +1,11 @@
+.input__field {
+  height: 40px;
+  width: 100px;
+  background-color: aquamarine;
+}
+
+.input__field__container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
