@@ -159,6 +159,7 @@ const SimpleForm = () => {
   return (
     <>
       <input
+        placeholder="Enter your first name"
         className="input__field"
         type="text"
         name="firstName"
@@ -166,6 +167,7 @@ const SimpleForm = () => {
         onChange={handleChange}
       />
       <input
+        placeholder="Enter your email address"
         className="input__field"
         type="email"
         name="email"
@@ -213,7 +215,16 @@ import { useState } from "react";
 const Example = () => {
   const [fruits, setFruits] = useState(["apple"]);
 
-  return <>{fruits.map((fruit) => fruit)}</>;
+  <div className="body__container">
+    <div className="fruit">
+      {fruits.map((fruit, index) => (
+        <p>
+          {index + 1}. {fruit}
+        </p>
+      ))}
+    </div>
+    <button className="button">Add my favourite fruit</button>
+  </div>;
 };
 ```
 
@@ -232,12 +243,21 @@ const Example = () => {
   };
 
   return (
-    <>
-      {fruits.map((fruit) => fruit)}
-      <button onClick={updateFruits}>Add my favourite fruit</button>
-    </>
+    <div className="body__container">
+      <div className="fruit">
+        {fruits.map((fruit, index) => (
+          <p>
+            {index + 1}. {fruit}
+          </p>
+        ))}
+      </div>
+      <button className="button" onClick={updateFruits}>
+        Add my favourite fruit
+      </button>
+    </div>
   );
 };
+export default Example;
 ```
 
 All that happened here was that I updated the fruits list by adding my own favourite fruit to the list, using the updateFruits function which spreads the initial state of the fruits list and then added my own favourite to the end of the array.
@@ -248,7 +268,7 @@ In this lecture, we examined React state; the concept of React hooks, why we use
 
 # Exercise
 
-Initiate a state as an empty string, then go ahead to update the state value by setting it to your name. Simple right? Now go ahead and get your hands dirty.
+Initiate a state as an empty string, then go ahead to update the state value by setting it to your name. Simple right? Do the same for an object and an array and see how easy it is. Go ahead and get your hands dirty.
 
 ```
 

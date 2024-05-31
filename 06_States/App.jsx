@@ -16,9 +16,9 @@ const SimpleCounter = () => {
   console.log(form);
 
   return (
-    <>
+    <div className="body__container">
       <p>Our count is {count}</p>
-      <button onClick={increment}>Increment</button>
+      <button className="button" onClick={increment}>Increment</button>
 
       <p>Form</p>
       <input
@@ -35,7 +35,7 @@ const SimpleCounter = () => {
         value={form?.email}
         onChange={handleChange}
       />
-    </>
+    </div>
   );
 };
 
