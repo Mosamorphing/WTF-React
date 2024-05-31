@@ -201,9 +201,46 @@ _handleChange_ is an event handler function that is called whenever the value of
 
 It is worthy of note that when a React application reloads the page, the state resets to its default values because React is a client-side library. This means that all the JavaScript code, including the React components and their state, runs in the browser after being downloaded from the server. Therefore, on a page reload, React starts fresh, and all state information is lost unless intentionally persisted and rehydrated using techniques like browser storage, server-side rendering, or other state management libraries.
 
-//how to update objects
-// how to update arrays as well.
-// using state to update forms.
+Lastly, I want us to touch on updating an array using state as well. This is quite simple and very straightforward.
+Like we always do,
+
+1. import and initialize the state (You should know how to do that yourself by now)
+2. Make the initial value of the state to be an array, it could be an empty array or an array containing strings, numbers or objects. Here we will keep it simple and use a string.
+
+```javascript
+import { useState } from "react";
+
+const Example = () => {
+  const [fruits, setFruits] = useState(["apple"]);
+
+  return <>{fruits.map((fruit) => fruit)}</>;
+};
+```
+
+Here, I returned a list of all the fruits in the fruits array using the array method called MAP. By now, you should be familiar with map as you must be coming from the knowledge of vanilla javascript.
+
+Now to update the fruits array, we are going to use our setter function which is setFruits in this case.
+
+```javascript
+import { useState } from "react";
+
+const Example = () => {
+  const [fruits, setFruits] = useState(["apple"]);
+  const updateFruits = () => {
+    const myFavFruit = "pineapple";
+    setFruits([...fruits, myFavFruit]);
+  };
+
+  return (
+    <>
+      {fruits.map((fruit) => fruit)}
+      <button onClick={updateFruits}>Add my favourite fruit</button>
+    </>
+  );
+};
+```
+
+All that happened here was that I updated the fruits list by adding my own favourite fruit to the list, using the updateFruits function which spreads the initial state of the fruits list and then added my own favourite to the end of the array.
 
 # Summary
 
