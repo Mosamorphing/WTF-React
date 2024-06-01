@@ -110,6 +110,12 @@ const SimpleCounter = () => {
 export default SimpleCounter;
 ```
 
+![6-1](./img/6-1.png)
+
+Then we went ahead and clicked the button so we got:
+
+![6-2](./img/6-2.png)
+
 For everytime we click on the increment button, we see immediately on the screen that the count increases. Using setCount ensures that React knows about the change and re-renders the component. When setCount is called, React automatically re-renders the component, updating the displayed count value in the <p> element.
 Just like we update a number in this case, the state setter can manipulate a string, object, even arrays as well.
 
@@ -157,7 +163,8 @@ const SimpleForm = () => {
   console.log("the form values are", form);
 
   return (
-    <>
+    <div className="body__container">
+      <p>Form</p>
       <input
         placeholder="Enter your first name"
         className="input__field"
@@ -174,11 +181,13 @@ const SimpleForm = () => {
         value={form?.email}
         onChange={handleChange}
       />
-    </>
+    </div>
   );
 };
 export default SimpleForm;
 ```
+
+![6-3](./img/6-3.png)
 
 Relaaaaaaaax! All we did here was:
 
@@ -212,6 +221,8 @@ Like we always do,
 ```javascript
 import { useState } from "react";
 
+import "./App.css";
+
 const Example = () => {
   const [fruits, setFruits] = useState(["apple"]);
 
@@ -228,12 +239,16 @@ const Example = () => {
 };
 ```
 
+![6-4](./img/6-4.png)
+
 Here, I returned a list of all the fruits in the fruits array using the array method called MAP. By now, you should be familiar with map as you must be coming from the knowledge of vanilla javascript.
 
 Now to update the fruits array, we are going to use our setter function which is setFruits in this case.
 
 ```javascript
 import { useState } from "react";
+
+import "./App.css";
 
 const Example = () => {
   const [fruits, setFruits] = useState(["apple"]);
@@ -260,6 +275,8 @@ const Example = () => {
 export default Example;
 ```
 
+![6-5](./img/6-5.png)
+
 All that happened here was that I updated the fruits list by adding my own favourite fruit to the list, using the updateFruits function which spreads the initial state of the fruits list and then added my own favourite to the end of the array.
 
 # Summary
@@ -269,7 +286,3 @@ In this lecture, we examined React state; the concept of React hooks, why we use
 # Exercise
 
 Initiate a state as an empty string, then go ahead to update the state value by setting it to your name. Simple right? Do the same for an object and an array and see how easy it is. Go ahead and get your hands dirty.
-
-```
-
-```
