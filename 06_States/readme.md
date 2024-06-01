@@ -189,6 +189,8 @@ export default SimpleForm;
 
 ![6-3](./img/6-3.png)
 
+![6-4](./img/6-4.png)
+
 Relaaaaaaaax! All we did here was:
 
 1. write the change handler such that we are able to track each character that the user puts in using the input field.
@@ -239,7 +241,7 @@ const Example = () => {
 };
 ```
 
-![6-4](./img/6-4.png)
+![6-5](./img/6-5.png)
 
 Here, I returned a list of all the fruits in the fruits array using the array method called MAP. By now, you should be familiar with map as you must be coming from the knowledge of vanilla javascript.
 
@@ -275,7 +277,7 @@ const Example = () => {
 export default Example;
 ```
 
-![6-5](./img/6-5.png)
+![6-6](./img/6-6.png)
 
 All that happened here was that I updated the fruits list by adding my own favourite fruit to the list, using the updateFruits function which spreads the initial state of the fruits list and then added my own favourite to the end of the array.
 
