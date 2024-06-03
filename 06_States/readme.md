@@ -1,4 +1,4 @@
-# WTF React minimalist tutorial: 5. React States
+# WTF React minimalist tutorial: 6. React States
 
 WTF React tutorial helps newcomers get started with React quickly.
 
