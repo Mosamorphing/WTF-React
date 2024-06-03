@@ -281,6 +281,48 @@ export default Example;
 
 All that happened here was that I updated the fruits list by adding my own favourite fruit to the list, using the updateFruits function which spreads the initial state of the fruits list and then added my own favourite to the end of the array.
 
+One more example and surely you will have to use this a lot of times. It is setting boolean using a state and the perfect example of this is a password field where we get to toggle the password field to show or hide the input based on user's preference.
+
+```javascript
+import { useState } from "react";
+
+import "./App.css";
+
+const SimpleForm = () => {
+  const [password, setPassword] = useState("");
+  const [showField, setShowField] = useState(false);
+
+  return (
+    <div className="body__container">
+      <div className="flex">
+        <input
+          placeholder="Enter your password"
+          className="input__field"
+          type={showField ? "text" : "password"}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <p onClick={() => setShowField(!showField)}>
+          {showField ? "Hide" : "Show"}
+        </p>
+      </div>
+    </div>
+  );
+};
+export default SimpleForm;
+```
+
+![6-7](./img/6-7.png)
+
+![6-8](./img/6-8.png)
+
+![6-9](./img/6-9.png)
+
+In the above example, we had two states, one was for the password and the other one to track if the password is shown or not. Whenever we click on SHOW or HIDE, we manipulate the "showField" state to either show the password or not.
+That is what the click action is doing, it takes the current state of showField, then set it to the opposite of it, meaning if it was false, the moment we click on it, it becoemes true -- and vice versa. Then we went on to render the SHOW or HIDE text dynamically depending on the current state of "showField". Lastly, to make sure that the field is hidden, there is the type attribute on input field that supports different values such as text, number, password, email and a few others.
+We then said that whenever we want to keep it hidden, use type "password", otherwise use type "text". Type "text" shows the input field values while type "password" hides it from the user.
+It is quite straightforward but to grasp it fully, you will have to play around with it and see how many scenarios you can come up with.
+
 # Summary
 
 In this lecture, we examined React state; the concept of React hooks, why we use react states, and we also learnt about how to use React states to store and update values within our component.
