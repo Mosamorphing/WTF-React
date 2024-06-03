@@ -38,7 +38,7 @@ const increment = () => {
 };
 ```
 
-what the increment function does here is to increase count by 1 for every time it is fired. However, it does not change the UI. You then have to update the dom by doing something like just to simply update the UI.
+what the increment function does here is to increase the count by 1 every time it is fired. However, it does not change the UI. To change the UI, you have to update the DOM by:
 
 ```javascript
 document.getElementById(
@@ -47,8 +47,9 @@ document.getElementById(
 document.getElementById("incrementButton").addEventListener("click", increment);
 ```
 
-A react state saves the day by coming to the rescue such that the function can be called and the UI gets updated almost immediately.
-It is important however to know that there is the concept of HOOKS in React. Hooks are special functions in React that allow you to use state and other React features in functional components. Before hooks, these features were only available in class components. Hooks make it easier to manage state and side effects in functional components, leading to cleaner and more maintainable code.
+React state plays a vital role in updating UI components efficiently. It is important however to know that there is the concept of HOOKS in React. 
+
+Hooks are special functions in React that allow you to use state and other React features in functional components. Before hooks, these features were only available in class components. Hooks make it easier to manage state and side effects in functional components, leading to cleaner and more maintainable code.
 Here is how it works.
 
 # 1. Importing `useState`
@@ -75,11 +76,11 @@ We can initialize the state (using the count example from above) as follows;
 const [count, setCount] = useState(0);
 ```
 
-Here, we are saying that the initial or default value of count is 0, count holds the current state value, while setCount is a function to update the state. Meaning that if we want to increment the value of count (0 as at now), we use setCount. Which brings us to the third step.
+Here, we are saying that the initial or default value of count is 0, `count` holds the current state value, while `setCount` is a function to update the state. This means that if we want to increment the value of count (0 as of now), we use `setCount`. Which brings us to the third step.
 
 # 3. Updating the state
 
-This is where we decide what happens when we do something -- the result of an action or event. For instance, if i want to increment the count by 1 everytime I click on an increment button, I am going to do the following;
+This is where we decide what happens when we do something -- the result of an action or event. For instance, if I want to increment the count by 1 everytime I click on an increment button, I am going to do the following;
 
 ```javascript
 const increment = () => {
@@ -116,10 +117,10 @@ Then we went ahead and clicked the button so we got:
 
 ![6-2](./img/6-2.png)
 
-For everytime we click on the increment button, we see immediately on the screen that the count increases. Using setCount ensures that React knows about the change and re-renders the component. When setCount is called, React automatically re-renders the component, updating the displayed count value in the <p> element.
-Just like we update a number in this case, the state setter can manipulate a string, object, even arrays as well.
+For everytime we click on the increment button, we see immediately on the screen that the count has increased. Using `setCount` ensures that React knows about the change and re-renders the component. When `setCount` is called, React automatically re-renders the component, updating the displayed count value in the <p> element.
+Just like we update a number in this case, the state setter can manipulate a string, object, and even arrays as well.
 
-You might be wondering, how does this apply in an application that people use in their day-to-day activities, because in reality there is no one who wants to use an app that just makes them click on a button and then add a number to an existing number. This brings us to a more robust use of state.
+You might be wondering, how this applies in an application that people use in their day-to-day activities, because in reality, no one wants to use an app that just makes them click on a button and then add a number to an existing number. This brings us to a more robust use of state.
 
 Here we will learn how to use state to store a value of an input field, which I believe every app in this world has, whether during authentication or to collect users' data. Enough of the long talks, let us dive into it!
 
