@@ -10,7 +10,7 @@ WTF React tutorial helps newcomers get started with React quickly.
 
 # React States
 
-What is state in React? State is a way to manage and track dynamic data within a component. Or in simpler words, it is a special kind of data that components can maintain and change over time. To make it even more relatable, we have to liken it to vanilla javascript. In vanilla javascript, we usually use Variables which hold values that can be changed.
+What is state in React? State is a way to manage and track dynamic data within a component. Simply put, it is a special kind of data that components can maintain and change over time. To make it even more relatable, we have to liken it to vanilla javascript. In vanilla javascript, we usually use Variables which hold values that can be changed.
 Take for instance, you have a count that you want to update from 0 to 1 in response to an event, maybe a click event. You'd typically say:
 
 ```html
