@@ -126,7 +126,7 @@ Here we will learn how to use state to store a value of an input field, which I 
 
 # 1. Import and initialize the state
 
-Just like we did above, we have to first inport and initialize the state.
+Just like we did above, we have to first import and initialize the state.
 
 ```javascript
 import { useState } from "react";
@@ -142,11 +142,11 @@ const SimpleForm = () => {
 export default SimpleForm;
 ```
 
-Here we made a state called form, which has a setter function called setForm, and the initial values of this form are store in an object, which has a firstName and an email.
+Here we made a state called "form", which has a setter function called "setForm", and the initial values of this form are stored in an object, which has a "firstName" and an "email".
 
 # 2. Make a change handler
 
-If you are coming from the knowledge of vanilla javascript (which I believe you are), you should know that handling forms can be a pain a pain, or well, maybe for me.
+If you are coming from the knowledge of vanilla javascript (which I believe you are), you should know that handling forms can be a pain, or well, maybe for me.
 A change handler helps us manipulate our state better. See it in action here:
 
 ```javascript
@@ -194,9 +194,8 @@ export default SimpleForm;
 
 Relaaaaaaaax! All we did here was:
 
-1. write the change handler such that we are able to track each character that the user puts in using the input field.
-   We did this by first spreading whatever we find inside of the form using the spread operator (...).
-2. Then since we have more than one value to assign (firstName and email), we say, e.target.name which is defined in each case as 'firstName' and 'email' respectively, we need to make the key-value pair in this case to then be the name we have in our initial state ( firstName and email) to be the name we have in the input attribute NAME. This means that we are updating our form object this way:
+1. Write the change handler such that we are able to track each character that the user puts in using the input field. We did this by first spreading whatever we find inside of the form using the spread operator (...).
+2. Then since we have more than one value to assign (firstName and email), we say, `e.target.name` which is defined in each case as 'firstName' and 'email' respectively, we need to make the key-value pair in this case to then be the name we have in our initial state ( firstName and email) to be the name we have in the input attribute NAME. This means that we are updating our form object this way:
 
 ```javascript
 setForm({
@@ -205,18 +204,18 @@ setForm({
 });
 ```
 
-_Name_ is an attribute of the input field that identifies the form control. It is used to match the input field with its corresponding property in the state object.
+_**Name**_ is an attribute of the input field that identifies the form control. It is used to match the input field with its corresponding property in the state object.
 
-_value_ is the current value of the input field. In React, the value of the input field is typically controlled by state, meaning it is derived from the state variable and updated when the state changes, such that the initial value of the firstNAME is an empty string and as we press characters, the value gets updated using the setter function HANDLECHANGE and then as a result, we have an updated _value_ per time. It ensures that the input field always reflects the current state of the application.
+_**value**_ is the current value of the input field. In React, the value of the input field is typically controlled by state, meaning it is derived from the state variable and updated when the state changes, such that the initial value of the `firstNAME` is an empty string and as we press characters, the value gets updated using the setter function `HANDLECHANGE` and then as a result, we have an updated _value_ per time. It ensures that the input field always reflects the current state of the application.
 
-_handleChange_ is an event handler function that is called whenever the value of the input field changes. It updates the state with the new value entered by the user. This function is passed to the onChange event of the input field, allowing it to respond to user input.
+_**handleChange**_ is an event handler function that is called whenever the value of the input field changes. It updates the state with the new value entered by the user. This function is passed to the onChange event of the input field, allowing it to respond to user input.
 
 3. We went ahead to console our form to be sure that our code works.
 
 It is worthy of note that when a React application reloads the page, the state resets to its default values because React is a client-side library. This means that all the JavaScript code, including the React components and their state, runs in the browser after being downloaded from the server. Therefore, on a page reload, React starts fresh, and all state information is lost unless intentionally persisted and rehydrated using techniques like browser storage, server-side rendering, or other state management libraries.
 
 Lastly, I want us to touch on updating an array using state as well. This is quite simple and very straightforward.
-Like we always do,
+Like we have been doing,
 
 1. import and initialize the state (You should know how to do that yourself by now)
 2. Make the initial value of the state to be an array, it could be an empty array or an array containing strings, numbers or objects. Here we will keep it simple and use a string.
@@ -319,8 +318,10 @@ export default SimpleForm;
 
 ![6-9](./img/6-9.png)
 
-In the above example, we had two states, one was for the password and the other one to track if the password is shown or not. Whenever we click on SHOW or HIDE, we manipulate the "showField" state to either show the password or not.
-That is what the click action is doing, it takes the current state of showField, then set it to the opposite of it, meaning if it was false, the moment we click on it, it becoemes true -- and vice versa. Then we went on to render the SHOW or HIDE text dynamically depending on the current state of "showField". Lastly, to make sure that the field is hidden, there is the type attribute on input field that supports different values such as text, number, password, email and a few others.
+In the above example, we had two states, one was for the password and the other one was to track whether the password is shown or not. Whenever we click on SHOW or HIDE, we manipulate the "showField" state to either show the password or not.
+That is what the click action is doing, it takes the current state of showField, then set it to the opposite of it, meaning if it was false, the moment we click on it, it becoemes true -- and vice versa. Then we went on to render the SHOW or HIDE text dynamically depending on the current state of "showField". 
+
+Lastly, to make sure that the field is hidden, there is a type attribute on the input field that supports different values such as text, number, password, email and a few others.
 We then said that whenever we want to keep it hidden, use type "password", otherwise use type "text". Type "text" shows the input field values while type "password" hides it from the user.
 It is quite straightforward but to grasp it fully, you will have to play around with it and see how many scenarios you can come up with.
 
