@@ -49,7 +49,7 @@ document.getElementById("incrementButton").addEventListener("click", increment);
 
 React state plays a vital role in updating UI components efficiently. It is important however to know that there is the concept of HOOKS in React.
 
-Hooks are special functions in React that allow you to use state and other React features in functional components. Before hooks, these features were only available in class components. Hooks make it easier to manage state and side effects in functional components, leading to cleaner and more maintainable code.
+Hooks are special functions in React that allow you to use state and other React features in functional components. Before hooks, these features were only available in class components. Hooks make it easier to manage state and side effects in functional components, leading to cleaner and more maintainable code. Note that all hooks start with the reserved word "USE", for example: useState, useEffect, useContext, useContext and so on.
 Here is how it works.
 
 # 1. Importing `useState`
@@ -120,4 +120,12 @@ Then we went ahead and clicked the button so we got:
 For everytime we click on the increment button, we see immediately on the screen that the count has increased. Using `setCount` ensures that React knows about the change and re-renders the component. When `setCount` is called, React automatically re-renders the component, updating the displayed count value in the <p> element.
 Just like we update a number in this case, the state setter can manipulate a string, object, and even arrays as well.
 
-You might be wondering, how this applies in an application that people use in their day-to-day activities, because in reality, no one wants to use an app that just makes them click on a button and then add a number to an existing number. This brings us to a more robust use of state which we will learn in the next chapter.
+You might be wondering, how this applies in an application that people use in their day-to-day activities, because in reality, no one wants to use an app that just makes them click on a button and then add a number to an existing number. This brings us to a more robust use of state which we will learn in the next lecture.
+
+# Summary
+
+In this lecture, we learnt what hooks are, what the most-used hook is, and we also examined how to use states to store and update a counter.
+
+# Exercise
+
+Initiate a state as an empty string, then go ahead to update the state value by setting it to your name. Now go get your hands dirty!

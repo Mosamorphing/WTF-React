@@ -2,7 +2,7 @@ Here we will learn how to use state to store a value of an input field, which I 
 
 # 1. Import and initialize the state
 
-Just like we in the last chapter, we have to first import and initialize the state.
+Just like we in the previous lecture, we have to first import and initialize the state.
 
 ```javascript
 import { useState } from "react";
@@ -203,8 +203,8 @@ It is quite straightforward but to grasp it fully, you will have to play around 
 
 # Summary
 
-In this lecture, we examined React state; the concept of React hooks, why we use react states, and we also learnt about how to use React states to store and update values within our component.
+In this lecture, we examined how to use states to store and update a more complex set of values and also learnt some real-world application of the state hook.
 
 # Exercise
 
-Initiate a state as an empty string, then go ahead to update the state value by setting it to your name. Simple right? Do the same for an object and an array and see how easy it is. Go ahead and get your hands dirty.
+Try and setup a list where you can add items to the said list, not just one item this time but two, or even three. Now go ahead and get your hands dirty.
