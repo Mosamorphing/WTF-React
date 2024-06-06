@@ -206,5 +206,4 @@ It is quite straightforward but to grasp it fully, you will have to play around 
 In this lecture, we examined how to use states to store and update a more complex set of values and also learnt some real-world application of the state hook.
 
 # Exercise
-
-Try and setup a list where you can add items to the said list, not just one item this time but two, or even three. Now go ahead and get your hands dirty.
+First, make a form that accepts first name, last name, email, password, and then a field to confirm the password and see how interesting that can be. Then try and setup a list where you can add items to the said list, not just one item this time but two, or even three.
