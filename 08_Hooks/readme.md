@@ -185,11 +185,11 @@ Typically, in a complex application, passing props from the grandparent, to the 
 The useContext hook in React is used to read and subscribe to context from your component. It is a part of React's Context API, which allows you to pass data through the component tree without manually passing props down manually through each nested component.
 Imagine a scenario where you want to identify a logged in user throughout your app, whether by reading it or by setting in (during login) you definitely cannot PROP your way out of such OR you want to make an application that support both light and dark modes, it is not advisable to start passing props to identify what the current preference of the user is, therefore you have to use the useContext hook and the good news you do not have to install an external library to use it. Sounds great, right? Let's see an example.
 
-# 3.1
-
 ```javascript
 //index.js
 import React, { createContext, useContext, useState } from "react";
+
+import "./App.css";
 
 const AuthContext = createContext();
 
@@ -237,6 +237,9 @@ function Index() {
   );
 }
 ```
+
+![8-1](./img/8-1.png)
+![8-2](./img/8-2.png)
 
 The Provider component accepts a VALUE prop that is passed to consuming components that are descendants of this Provider. Note that VALUE here passed out a prop should contain all the states and their corresponding setters that you want to use across the application, from anywhere at all. Just as shown above, i created a constant that houses isLoggedIn and setIsLoggedIn, making it available to for anywhere in the whole app. 3. You can now use your state and its setter (isLoggedIn, setIsLoggedIn) anywhere in this app by just importing useContext and AuthContext, then getting the state and setter out of those as indicated below;
 
