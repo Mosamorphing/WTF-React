@@ -11,7 +11,7 @@ WTF React tutorial helps newcomers get started with React quickly.
 # What are hooks?
 
 React Hooks are functions that let you use state and other React features in functional components. They are like special tools that make it easier to add features to your components without needing complex class components.
-With hooks, you can create awesome components using just functions! If you are familiat with classes, you know that most times they are painful to write, but now that hooks have made life easier, why not try them out?
+With hooks, you can create awesome components using just functions! If you are familiar with classes, you know that most times they are painful to write, but now that hooks have made life easier, why not try them out?
 Popular react hooks include useState, useEffect, useContext, useReducer, useMemo, useCallback.
 Notice how all the hooks begin with the keyboard "USE". This is the convention in React and when you are writing your own custom hooks -- because you can, make sure to follow the same convention and start with "use" to make it clear that they follow the rules of hooks.
 
@@ -35,6 +35,7 @@ function MyComponent() {
 ```
 
 I am now going to explain what each term above means;
+
 -- Side effect, just as the name implies in pain english language is an additional effect that occurs in addition to the main effect of a situation, or simply put, the consequence of an action. You might still be wondering what a consequence of an action means, this means that any code that runs inside a use effect is running because something just happened. A classic example is fetching some data from the backend when you arrive at a particular page in your application. Such data fetching is usually put in a useEffect hook such that it then only runs based on whether you come to that page or not. We will seet it in action in just a bit.
 
 -- Dependencies: The dependencies argument in useEffect is an array that allows you to control when the effect should run. It specifies the values that the effect depends on. Here is a simple explanation of how dependencies work in useEffect: 1. If you don't provide the dependencies array, the effect will run after every render. 2. If you provide an empty array [], the effect will run once, after the initial render. 3. If you include values in the dependencies array (e.g., [prop1, state1]), the effect will run after the initial render and whenever any of the dependencies change in subsequent renders.
@@ -71,7 +72,7 @@ function Users() {
 export default Users;
 ```
 
-What we did here was just stating that we get t the users page, fetch some set of data from the users endpoint and then display them to the client. Since we used an empty dependeny, this effect is only going to be seen once when the page is loaded. If we passed in an array of dependencies, it is going to run everytime any of the dependencies change. For example;
+What we did here was just stating that we get the users page, fetch some set of data from the users endpoint and then display them to the client. Since we used an empty dependency, this effect is only going to be seen once when the page is loaded. If we passed in an array of dependencies, it is going to run everytime any of the dependencies change. For example;
 
 ```javascript
 function User({ id }) {
@@ -94,9 +95,9 @@ function User({ id }) {
 export default User;
 ```
 
-Here, for everytime the id (which was passed here as a prop) changes, the endpoint to fetch the data is going to be called/hit and then it updates user using the setter SETUSER or error, in case there is an error.
+Here, for everytime the id (which was passed here as a prop) changes, the endpoint to fetch the data is going to be called/hit and then it updates user using the setter SETUSER or error (using SETERROR), in case there is an error.
 Please note that it is also going to have run the first time on reaching the page, and then whenever the id changes, not that it only runs when the id changes.
-You might be wondering, what if we have more than one dependency, meaning we want it to run based on two or more actions, that is also possible as well. It then means that we will have all the dependencies in the same arrat, separated by commas. It is shown as follows
+You might be wondering, what if we have more than one dependency? meaning we want it to run based on two or more actions. Well, that is also possible. It then means that we will have all the dependencies in an array, separated by commas. It is shown as follows;
 
 ```javascript
 useEffect(() => {
@@ -158,14 +159,15 @@ First, define a reducer function that takes the current state (the initial value
 Then, call useReducer in your component, passing the reducer function and an initial state value.
 as follows :
 
-`````javascript
+```javascript
 const [state, dispatch] = useReducer(reducer, { count: 0 });
-````
+```
+
 It returns an array with two elements: the current state and a dispatch function. This is similar to useState whic returns the state and its setter. As a refresher, this is what I just said means;
 
-````javascript
-const [counter, setCounter] = useState(0) //but we are not talking about useState so do not mix things up here
-`````
+```javascript
+const [counter, setCounter] = useState(0); //but we are not talking about useState so do not mix things up here
+```
 
 For you to then make an update to the state, you have to use the dispatch function, while passing in the action object which typically has a type property that identifies with the type of action you want to follow the event.
 It looks like this:
@@ -181,7 +183,7 @@ You might be wondering -- and trust me this question is very valid, that why wou
 
 # 3. useContext
 
-Typically, in a complex application, passing props from the grandparent, to the the parent, then to the child can be such a daunting task. In fact, it makes life harder for everyone. To solve this issue of prop drilling is where the useContext hook comes in.
+Typically, in a complex application, passing props from the grandparent, to the parent, then to the child can be such a daunting task. In fact, it makes life harder for everyone. To solve this issue of prop drilling is where the useContext hook comes in.
 The useContext hook in React is used to read and subscribe to context from your component. It is a part of React's Context API, which allows you to pass data through the component tree without manually passing props down manually through each nested component.
 Imagine a scenario where you want to identify a logged in user throughout your app, whether by reading it or by setting in (during login) you definitely cannot PROP your way out of such OR you want to make an application that support both light and dark modes, it is not advisable to start passing props to identify what the current preference of the user is, therefore you have to use the useContext hook and the good news you do not have to install an external library to use it. Sounds great, right? Let's see an example.
 
@@ -241,7 +243,9 @@ function Index() {
 ![8-1](./img/8-1.png)
 ![8-2](./img/8-2.png)
 
-The Provider component accepts a VALUE prop that is passed to consuming components that are descendants of this Provider. Note that VALUE here passed out a prop should contain all the states and their corresponding setters that you want to use across the application, from anywhere at all. Just as shown above, i created a constant that houses isLoggedIn and setIsLoggedIn, making it available to for anywhere in the whole app. 3. You can now use your state and its setter (isLoggedIn, setIsLoggedIn) anywhere in this app by just importing useContext and AuthContext, then getting the state and setter out of those as indicated below;
+The Provider component accepts a VALUE prop that is passed to consuming components that are descendants of this Provider. Note that VALUE here passed out a prop should contain all the states and their corresponding setters that you want to use across the application, from anywhere at all. Just as shown above, I created a constant that houses isLoggedIn and setIsLoggedIn, making it available to for anywhere in the whole app.
+
+3. You can now use your state and its setter (isLoggedIn, setIsLoggedIn) anywhere in this app by just importing useContext and AuthContext, then getting the state and setter out of those as indicated below;
 
 ```javascript
 const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
