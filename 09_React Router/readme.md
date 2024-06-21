@@ -34,8 +34,8 @@ import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import "./index.css";
-import HomePage from './pages/HomePage';
-import ProfilePage from './pages/ProfilePage';'
+import HomePage from "./pages/HomePage";
+import ProfilePage from "./pages/ProfilePage";
 
 const router = createBrowserRouter([
   {
@@ -106,5 +106,115 @@ const router = createBrowserRouter([
 
 By clicking on that, the user gets to be taken to the homepage or well, the specified page in the "to" attribute. The TO is just to specific where you want the user to be directed to. It works just like href in anchor tag.
 
-
 # Dynamic Paths
+
+There are a few times when you may want to render the same view but for different sets of data. A classic example is a profile page which shows a list of users and then by clicking on a particular user, you get to go to another page and using the user's information, you fetch the user's data. How do you do this? How do you know which user's data to fetch per time? This is where the idea of dynamic paths come in.
+Dynamic paths in React Router allow you to create routes that can match any value in a specific segment of the URL. This is achieved by using a colon (:) in the path pattern to indicate a dynamic segment.
+Let us take an example;
+
+```javascript
+import React from "react";
+import { Link } from "react-router-dom";
+
+function ProfilePage() {
+  const users = [
+    {
+      id: 1,
+      name: "User One",
+    },
+    {
+      id: 2,
+      name: "User Two",
+    },
+    {
+      id: 3,
+      name: "User Three",
+    },
+  ];
+
+  return (
+    <div className="flex gap-5">
+      {users?.map((user) => (
+        <Link to={`users/${user?.id}`} key={user.id}>
+          My name is {user?.name}
+        </Link>
+      ))}
+    </div>
+  );
+}
+export default ProfilePage;
+```
+
+Then in main.jsx, we have to create a new route in router which is going to house each particular user's profile.
+
+```javascript
+const router = createBrowserRouter([
+    //other paths go here
+  {
+    path: "/profile/:userId", //note that userId here could be anything at all, you could call it profileId, or even just id. just anything that helps you explain what the nested path signifies.
+    element: <UserDetails />, // the page you have linked the list to.
+  },
+```
+
+With this, clicking on any user's profile and getting our data just got a little bit easier. Reason being that to fetch a single user's data, we mostly would need to pass in an id to an endpoint that fetches the particular user's profile. With the dynamic path implementation we just did, we can get the id on the page without any hassle.
+To do this, you make use of the useParams hook; Here's how to do that;
+
+```javascript
+//the page that shows detailed user's information and is being linked to.
+import { useParams } from "react-router-dom";
+function UserDetails() {
+  const params = useParams();
+  console.log("params are", params); // do this to see what params return to us
+  return (
+    <div className="">Welcome to my profile, my id is {params?.userId}</div>
+  );
+}
+export default UserDetails;
+```
+
+So, for every path that you try to match the page to, it's going to be available. E.g if you go to /profile/28, it is available, if you go to /profile/avshaudgadhadagdgadgad, trust me that too is available. UseParams return the id to us and with that we can perform a fetch action which is a get request to an endpoint hosted somewhere as shown below. This could be done in a useEffect but of course, you can use an external library like react query to make life easier for yourself.
+
+```javascript
+import React, { useState, useEffect } from "react";
+import { userParams } from "react-router-dom";
+import axios from "axios";
+
+function UserDetails() {
+  const { userId } = useParams(); // i destructed userId off of useParams here which is the same thing as having const params = useParams(), then using it as params?.userId
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      setLoading(true);
+      try {
+        const response = await axios.get(
+          `https://jsonplaceholder.typicode.com/users/${userId}`
+        );
+        setUser(response.data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUser();
+  }, [userId]);
+
+  return (
+    <div>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <div>
+          <h2>{user?.name}</h2>
+        </div>
+      )}
+    </div>
+  );
+}
+export default UserDetails;
+```
+
+This is a typical use case of the dynamic paths in a web application.
