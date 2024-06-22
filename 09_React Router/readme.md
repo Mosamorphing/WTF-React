@@ -88,6 +88,7 @@ const router = createBrowserRouter([
 ]);
 ```
 
+Before the error element:
 ![9-3](./img/9-3.png)
 
 After adding the error element:
@@ -189,6 +190,7 @@ export default UserDetails;
 
 So, for every path that you try to match the page to, it's going to be available. E.g if you go to /profile/28, it is available, if you go to /profile/avshaudgadhadagdgadgad, trust me that too is available. UseParams return the id to us and with that we can perform a fetch action which is a get request to an endpoint hosted somewhere as shown below. This could be done in a useEffect but of course, you can use an external library like react query to make life easier for yourself.
 
+Look at the URL here and see how it matched what was rendered on the UI;
 ![9-7](./img/9-7.png)
 
 ```javascript
