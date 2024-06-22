@@ -55,6 +55,10 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 );
 ```
 
+![9-1](./img/9-1.png)
+
+![9-2](./img/9-2.png)
+
 By default, the slash signifies the homepage ('/') and all you have pass into the element is the component for homepage that you have created and profilepage, in the case of /profile.
 The RouterProvider that we imported and wrapped inside of Our Render as shown below just implies that we have handed over the entry point into our application to React Router while using the router to define what component is rendered at each url.
 
@@ -84,6 +88,11 @@ const router = createBrowserRouter([
 ]);
 ```
 
+![9-3](./img/9-3.png)
+
+After adding the error element:
+![9-4](./img/9-4.png)
+
 You will add your own component here, not a div (to separate concerns).You should note that it is usually advisable to add a button that leads the user to a page that exists on the platform, usually the homepage. Now to do that, we use LINK from the same library, react router.
 You might be wondering, why not use the html anchor tag (a), the reason is Link does not perform a full page refresh when clicked, compared to anchor tag. You can try both and see that when you use the anchor tag, the page refreshes and then requests the whole html and javascript all over again. Here's how to use Link.
 
@@ -95,7 +104,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <HomePage />,
     errorElement: (
-      <div>
+      <div className="container">
         <p>Oops, you just came to a non-existent page</p>
         <Link to="/">Go back Home</Link>
       </div>
@@ -103,6 +112,8 @@ const router = createBrowserRouter([
   },
 ]);
 ```
+
+![9-5](./img/9-5.png)
 
 By clicking on that, the user gets to be taken to the homepage or well, the specified page in the "to" attribute. The TO is just to specific where you want the user to be directed to. It works just like href in anchor tag.
 
@@ -113,7 +124,6 @@ Dynamic paths in React Router allow you to create routes that can match any valu
 Let us take an example;
 
 ```javascript
-import React from "react";
 import { Link } from "react-router-dom";
 
 function ProfilePage() {
@@ -133,9 +143,9 @@ function ProfilePage() {
   ];
 
   return (
-    <div className="flex gap-5">
+    <div className="container">
       {users?.map((user) => (
-        <Link to={`users/${user?.id}`} key={user.id}>
+        <Link to={`/profile/${user?.id}`} key={user.id}>
           My name is {user?.name}
         </Link>
       ))}
@@ -148,6 +158,7 @@ export default ProfilePage;
 Then in main.jsx, we have to create a new route in router which is going to house each particular user's profile.
 
 ```javascript
+import UserDetails from './pages/UserDetails'
 const router = createBrowserRouter([
     //other paths go here
   {
@@ -155,6 +166,8 @@ const router = createBrowserRouter([
     element: <UserDetails />, // the page you have linked the list to.
   },
 ```
+
+![9-6](./img/9-6.png)
 
 With this, clicking on any user's profile and getting our data just got a little bit easier. Reason being that to fetch a single user's data, we mostly would need to pass in an id to an endpoint that fetches the particular user's profile. With the dynamic path implementation we just did, we can get the id on the page without any hassle.
 To do this, you make use of the useParams hook; Here's how to do that;
@@ -166,13 +179,17 @@ function UserDetails() {
   const params = useParams();
   console.log("params are", params); // do this to see what params return to us
   return (
-    <div className="">Welcome to my profile, my id is {params?.userId}</div>
+    <div className="container">
+      Welcome to my profile, my id is {params?.userId}
+    </div>
   );
 }
 export default UserDetails;
 ```
 
 So, for every path that you try to match the page to, it's going to be available. E.g if you go to /profile/28, it is available, if you go to /profile/avshaudgadhadagdgadgad, trust me that too is available. UseParams return the id to us and with that we can perform a fetch action which is a get request to an endpoint hosted somewhere as shown below. This could be done in a useEffect but of course, you can use an external library like react query to make life easier for yourself.
+
+![9-7](./img/9-7.png)
 
 ```javascript
 import React, { useState, useEffect } from "react";
@@ -218,3 +235,11 @@ export default UserDetails;
 ```
 
 This is a typical use case of the dynamic paths in a web application.
+
+# Summary
+
+In this lesson, we learnt how to create routes, navigate to such routes and also how to navigate to dynamic paths. We also touched on why Link is preferred to the anchor tag and lastly, how to use useParams to get an id to fetch data from an endpoint.
+
+# Exercise
+
+Replicate these examples without taking a look at the codebase provided. Go ahead to implement another use case for this, take for instance a transactions page that lists various transactions and by clicking on one of them, you get to go to another page where all the details of such transaction is listed. It is going to be fun, trust me.
