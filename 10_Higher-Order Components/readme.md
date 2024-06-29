@@ -81,7 +81,7 @@ function ProfilePage() {
 export default AuthenticatedRoute(ProfilePage); // we wrapped the page inside of the higer-one component
 ```
 
-So, whenever a clever user tries to manipulate the application by manually setting the URL, if we have wrapped such page with AuthenticatedRoute, it navigates the user back to the homepage and then they get to perform the normal act of logging in and becoming an authorized user.
+So, whenever a clever user tries to manipulate the application by manually setting the URL, if we have wrapped such page with AuthenticatedRoute, we first get a loading state while fetching the user's info(whether it exists or not) and then an action is taken based on the result, either the page is rendered or the application navigates the user back to the homepage and then they get to perform the normal act of logging in and becoming an authorized user.
 
 # Summary
 
