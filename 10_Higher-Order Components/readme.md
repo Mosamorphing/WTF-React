@@ -24,6 +24,7 @@ import { useNavigate } from "react-router-dom";
 
 export const AuthenticatedRoute = (Component) => {
   return (props) => {
+    //grab your loading state, user and logout depending on whatever action you want to perform here
     // eslint-disable-next-line react/display-name, react-hooks/rules-of-hooks
     const navigate = useNavigate();
     // eslint-disable-next-line react/display-name, react-hooks/rules-of-hooks
