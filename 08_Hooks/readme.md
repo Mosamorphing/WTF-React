@@ -1,4 +1,4 @@
-# WTF React minimalist tutorial: 8. React Hooks
+# WTF React minimalist tutorial: 7. React Hooks
 
 WTF React tutorial helps newcomers get started with React quickly.
 
