@@ -1,4 +1,4 @@
-# WTF React minimalist tutorial: 8. Higher-Order Components
+# WTF React minimalist tutorial: 10. Higher-Order Components
 
 WTF React tutorial helps newcomers get started with React quickly.
 
