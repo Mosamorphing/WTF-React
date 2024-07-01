@@ -1,4 +1,4 @@
-# WTF React minimalist tutorial: 8. React Router
+# WTF React minimalist tutorial: 9. React Router
 
 WTF React tutorial helps newcomers get started with React quickly.
 
