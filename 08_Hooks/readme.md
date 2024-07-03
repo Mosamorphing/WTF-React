@@ -113,6 +113,36 @@ useEffect(() => {
 }, [id, something, anotherThing, anotherExtraThing]);
 ```
 
+Before we move on from useEffect, there's a concept here that needs to be learnt, and it is called the cleanup function. The cleanup function in React's useEffect hook is used to stop side effects that no longer need to be executed before a component is unmounted. This is done in order to prevent memory leaks and ensure that the component's behavior is consistent and predictable. Here's a sample usage of the cleanup function.
+
+```javascript
+import { useState, useEffect } from "react";
+
+function Timer() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCount(count + 1);
+    }, 1000);
+
+    //here is the cleanup function
+    return () => {
+      clearInterval(interval);
+    };
+  }, [count]);
+
+  return (
+    <div>
+      <h2>Timer</h2>
+      <p>The count is: {count}</p>
+    </div>
+  );
+}
+```
+
+In more simpler terms, the cleanup function is telling the useEffect hook to "turn off" the timer when it is no longer in such such that we don't end up having needless renders and memory leaks. In the above example, if for instance you set up an interval in the useEffect hook without providing a cleanup function, the interval will continue to run even after the component has been unmounted. This means that the callback function you've defined in the interval will keep getting called, even though the component is no longer visible on the screen. Each time the interval callback function is called, it will try to update the component's state (in this case, the count state). However, since the component has already been unmounted, React will not be able to actually update the UI. Instead, React will try to "re-render" the component, even though it's not visible anymore. These unnecessary re-renders can lead to performance issues in your application, as React has to do extra work to handle these useless updates. It's just like cleaning up your dishes before using them again, that's what the cleanup function does.
+
 # 2. useReducer
 
 The useReducer hook works similarly to the useState hook, but it's more suitable for complex state logic. UseReducer allows you to keep track of multiple pieces of state and handle state changes in a more organized way. It allows you to define a reducer function that encloses your state update logic, making it easier to manage states in your react application. Here is a simple example, similar to the example in lecture 6 on useStates -- the counter example.
