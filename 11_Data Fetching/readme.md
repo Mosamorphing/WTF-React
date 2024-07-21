@@ -8,12 +8,12 @@ WTF React tutorial helps newcomers get started with React quickly.
 
 ---
 
-Typically, the data rendered on the frontend to users are gotten from the database somewhere, but because users cannot directly access the database, the data are then sent over the wire from various endpoints that have been provided on the backend. In Javascript, we us the FETCH API.
+Typically, the data rendered on the frontend to users are gotten from the database somewhere, but because users cannot directly access the database, the data are then sent over the wire from various endpoints that have been provided on the backend. In Javascript, we use the FETCH API to make these requests.
 
 ## What is the fetch API?
 
-The Fetch API is a modern interface for making HTTP requests in web browsers. It provides a more powerful and flexible way to send and receive data compared to older methods like XMLHttpRequest. This API allows us to easily make network requests, handle responses, and deal with data in various formats The fetch API is in-built and therefore natively supported in modern browsers without the need for any external library. Meaning that we can, using just the fetch api, get our data without having to rely on external libraries such as axios.. It is commonly used for interacting with RESTful APIs, retrieving resources, and sending data to servers.
-Fetch uses Promises, making it easier to handle asynchronous operations and chain multiple requests. It is also worthy of note that the syntax is quite easy and straightforward. It is very easy to use and master.
+The Fetch API is a modern interface for making HTTP requests in web browsers. It provides a more powerful and flexible way to send and receive data compared to older methods like XMLHttpRequest. This API allows us to easily make network requests, handle responses, and deal with data in various formats The fetch API is in-built and therefore natively supported in modern browsers without the need for any external library. Meaning that we can, using just the fetch API, get our data without having to rely on external libraries such as axios. The Fetch API is commonly used for interacting with RESTful APIs, retrieving resources, and sending data to servers.
+Fetch uses Promises, making it easier to handle asynchronous operations and chain multiple requests. It is also worthy of note that the syntax is quite easy and straightforward.
 
 Let's take a look at a basic example of how the fetch API's syntax in use.
 
@@ -24,7 +24,7 @@ fetch("https://jsonplaceholder.typicode.com/posts")
   .catch((error) => console.error("Error:", error));
 ```
 
-What we did using the above code is that, we are calling the json placeholder endpoint (which could be any endpoint really) and we then expect to get a response from the endpoint which we then converted into JSON in the second line. We then went on to log our data into the console to see what it looks like so we can then proceed to render it on the UI.
+What we did using the above code is that, we are calling the json placeholder's posts endpoint (which could be any endpoint really) and we then expect to get a response from the endpoint which we then converted into JSON in the second line. We then went on to log our data into the console to see what it looks like so we can then proceed to render it on the UI.
 
 Here's a full example of the fetch api, combined with useEffect to fetch data from an endpoint when the page mounts and then render the data on the frontend.
 
@@ -77,16 +77,16 @@ export default Posts;
 The above code fetches data from the endpoint and then maps over each of the post object in the posts array to return a paragraph showing the ID and the title of such post.
 Notice how that I put an attribute KEY on the paragraph tag that I returned? The reasons are not far-fetched, they include:
 
-1. Efficient Reconciliation: React uses a process called reconciliation to update the UI when the state of an application changes. By providing unique keys, React can quickly identify which elements have changed and only update those, rather than re-rendering the entire list. This leads to improved performance and resource management.
-2. Preventing Unexpected Behavior: Without unique keys, React may struggle to correctly update elements, which can result in unpredictable UI behavior. For instance, if an item is removed from a list, React might not properly adjust the remaining items, leading to display issues. Unique keys help maintain the integrity of the list during updates.
-3. Unique Among Siblings: Keys must be unique only among their immediate siblings. This means that while the same key can be reused in different lists, each key within a single list must be distinct to avoid conflicts during updates. For example, we cannot have two different objects in that array with the same ID (because we are using ID as the key in his case), we are going to get a warning in the console saying "Warning: Encountered two children with the same key, `KEY_VALUE`. Keys should be unique so that components maintain their identity across updates.", OR 'Warning: Each child in a list should have a unique "key" prop.
-   ' if you didn't pass the key prop at all.
+1. Efficient reconciliation: React uses a process called reconciliation to update the UI when the state of an application changes. By providing unique keys, React can quickly identify which elements have changed and only update those, rather than re-rendering the entire list. This leads to improved performance and resource management.
+2. Preventing unexpected behavior: Without unique keys, React may struggle to correctly update elements, which can result in unpredictable UI behavior. For instance, if an item is removed from a list, React might not properly adjust the remaining items, leading to display issues. Unique keys help maintain the integrity of the list during updates.
+3. Unique among siblings: Keys must be unique only among their immediate siblings. This means that while the same key can be reused in different lists, each key within a single list must be distinct to avoid conflicts during updates. For example, we cannot have two different objects in that array with the same ID (because we are using ID as the key in his case), we are going to get a warning in the console saying "Warning: Encountered two children with the same key, `KEY_VALUE`. Keys should be unique so that components maintain their identity across updates.", OR 'Warning: Each child in a list should have a unique "key" prop.
+   ' if we didn't pass the key prop at all.
    All of these is just to emphasize the importance of passing the key prop everytime you map over items in an array.
 
-The Fetch API has met our basic need in this case, however, fetch doesn't automatically transform JSON data meaning everytime we use the API, we have to first convert our response to JSON before going ahead to use it. This can be quite an hassle in the long-run as we do not want to be duplicating codes unnecessarily.
-Also, it doesn't have built-in support for request cancellation, which has posed challenges for us needing to abort ongoing requests. This limitation stemmed from the nature of JavaScript Promises, as stated earlier that the fetch API uses Promises, which do not inherently support cancellation.
+The Fetch API has met our basic need in this case. However, fetch doesn't automatically transform JSON data meaning everytime we use the API, we have to first convert our response to JSON before going ahead to use it. This can be quite an hassle in the long-run as we do not want to be duplicating codes unnecessarily.
+Also, it doesn't have built-in support for request cancellation, which has posed challenges for us needing to abort ongoing requests. This limitation stemmed from the nature of JavaScript Promises, as stated earlier that the fetch API uses Promises, which do not support cancellation.
 In addition to the above, error handling is a mess when you are using the fetch API. it is always verbose, as network errors don't reject the promise, trust me you don't want to go down that path of having to handle a lot of cases that could occur regarding errors in your code.
-Thankfully, there's a library that perfectly solves the limitations that face the FETCH API. It is called AXIOS.
+Thankfully, there's a library that perfectly solves the limitations that face the Fetch API. It is called AXIOS.
 
 ## What is Axios?
 
@@ -166,7 +166,7 @@ For example: you can create a file called api.js and then have an axios instance
 ```javascript
 import axios from "axios";
 
-// Creation happens here
+// Instance creation happens here
 export const api = axios.create({
   baseURL: "https://jsonplaceholder.typicode.com",
 });
@@ -198,7 +198,7 @@ api.interceptors.response.use(
 );
 ```
 
-we can then have our posts page to look like we are calling the api here to get some data from the baseURL provided here. Typically, the baseURL is going to be the server that you hit everytime you send a request and then all you have to do is pass the particular route you want to hit as follows:
+We can then have our posts page to look like we are calling the api here to get some data from the baseURL provided here. Typically, the baseURL is going to be the server that you hit everytime you send a request and then all you have to do is pass the particular route you want to hit as follows:
 
 ```javascript
 import { useState, useEffect } from "react";
