@@ -72,6 +72,8 @@ const Posts = () => {
 export default Posts;
 ```
 
+![11-1](./img/11-1.png)
+
 The above code fetches data from the endpoint and then maps over each of the post object in the posts array to return a paragraph showing the ID and the title of such post.
 Notice how that I put an attribute KEY on the paragraph tag that I returned? The reasons are not far-fetched, they include:
 
