@@ -82,6 +82,8 @@ Another perfect use case for conditional rendering is when you are trying to fet
 
 ```javascript
 import React, { useState } from "react";
+import "./App.css";
+
 const ConditionalClassExample = () => {
   const [isActive, setIsActive] = useState(false);
 
