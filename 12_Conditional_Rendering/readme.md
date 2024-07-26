@@ -76,7 +76,37 @@ export default ToggleButton;
 
 ![12-1](./img/12-1.png) ![12-2](./img/12-2.png)
 
-In this example, we use state to keep track of whether the button is on or off, and then went on to conditionally render both the button text and an additional message.
+In this example, we used state to keep track of whether the button is on or off, and then went on to conditionally render both the button text and an additional message.
+
+Another perfect use case for conditional rendering is when you are trying to fetch some sets of data from an API endpoint, you have to cater for the loading state, error state and then the original component to render if the data come back successfully to the user. Conditional rendering can also be used in classNames such that based on some condition, you can choose to apply a className or not. Here's an example of that;
+
+```javascript
+import React, { useState } from "react";
+const ConditionalClassExample = () => {
+  const [isActive, setIsActive] = useState(false);
+
+  const toggleActive = () => {
+    setIsActive(!isActive);
+  };
+
+  return (
+    <div className="container">
+      <p
+        className={`default ${isActive ? " active_bg" : "inactive_bg"}`}
+        onClick={toggleActive}
+      >
+        {isActive ? "Active" : "Inactive"}
+      </p>
+    </div>
+  );
+};
+
+export default ConditionalClassExample;
+```
+
+![12-3](./img/12-3.png) ![12-4](./img/12-4.png)
+
+In the above example, the className "default" serves as a foundation, always present regardless of the the "isActive" state. It is the base styling that remains constant.The conditional part ${isActive ? "active_bg" : "inactive_bg"} acts as a dynamic modifier. It evaluates the isActive state and applies either "active_bg" or "inactive_bg" accordingly. This conditional class complements the base "default" class, allowing us to apply state-specific styling.
 
 # Summary
 
