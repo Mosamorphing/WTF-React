@@ -1,4 +1,4 @@
-# WTF React minimalist tutorial: 8. Higher-Order Components
+# WTF React minimalist tutorial: 10. Higher-Order Components
 
 WTF React tutorial helps newcomers get started with React quickly.
 
@@ -21,6 +21,7 @@ we can have a component called AuthenticatedRoute in our application, which guar
 
 ```javascript
 import { useNavigate } from "react-router-dom";
+import './App.css'
 
 export const AuthenticatedRoute = (Component) => {
   return (props) => {
@@ -51,6 +52,8 @@ Then to use it in your protected routes, all you have to do it wrap the protecte
 ```javascript
 import { Link } from "react-router-dom";
 import { AuthenticatedRoute } from "../components/AuthenticatedRoute";
+import './App.css'
+
 
 function ProfilePage() {
   const users = [
