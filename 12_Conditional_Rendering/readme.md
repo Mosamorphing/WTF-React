@@ -74,6 +74,9 @@ const ToggleButton = () => {
 export default ToggleButton;
 ```
 
+![12-1](./img/12-1.png)
+![12-2](./img/12-2.png)
+
 In this example, we use state to keep track of whether the button is on or off, and then went on to conditionally render both the button text and an additional message.
 
 # Summary
