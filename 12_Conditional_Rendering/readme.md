@@ -52,8 +52,7 @@ Let's combine what we learned about state with conditional rendering:
 
 ```javascript
 import { useState } from "react";
-
-import './App.css'
+import "./App.css";
 
 const ToggleButton = () => {
   const [isOn, setIsOn] = useState(false);
@@ -80,6 +79,7 @@ In this example, we use state to keep track of whether the button is on or off, 
 # Summary
 
 In this lecture, we learned about different methods of conditional rendering in React, including the ternary operator, logical AND operator, as well as how to combine conditional rendering with state.
+Please note that it may not be as basic as this in your project (starting with the exercise), such that after fetching your data from an endpoint for instance, you have to check for if a condition is true or false and then based on that, render your components conditionally.
 
 # Exercise
 
