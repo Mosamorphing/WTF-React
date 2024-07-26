@@ -28,7 +28,7 @@ const Greeting = () => {
 export default Greeting;
 ```
 
-In this example, we are checking that if if isLoggedIn is true, display "Welcome back!", otherwise it shows "Please sign in."
+In this example, we are checking that if isLoggedIn is true, display "Welcome back!", otherwise show "Please sign in."
 The logic is that, the set of element that follows the "?" is what is to be shown when the condition is true, while the element that follows ":" is to be shown whenever the condition is false. So, read the above statement as if isLoggedIn is TRUE (?), show "Welcome back", but if it is false (":"), show "Please sign in".
 
 # 2. Using Logical AND (&&) Operator
@@ -74,8 +74,7 @@ const ToggleButton = () => {
 export default ToggleButton;
 ```
 
-![12-1](./img/12-1.png)
-![12-2](./img/12-2.png)
+![12-1](./img/12-1.png) ![12-2](./img/12-2.png)
 
 In this example, we use state to keep track of whether the button is on or off, and then went on to conditionally render both the button text and an additional message.
 
