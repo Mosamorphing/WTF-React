@@ -132,3 +132,11 @@ In this example, handleClick is memoized using useCallback. This ensures that th
 useMemo and useCallback are performance optimization tools in React. While both involve memorization, they serve different purposes. useMemo caches the result of a complex calculation, preventing unnecessary re-computations when the result hasn't changed. On the other hand, useCallback caches a function, preventing it from being recreated on every render, which is especially useful when passing functions as props to child components to prevent unnecessary re-renders. Essentially, useMemo is for optimizing values, while useCallback is for optimizing functions.
 
 However, with the above perks come limitations, which the major one is performance issues. It sounds ironic that, you are trying to avoid performance issues by using these hooks and then run into more perfomance issues by using them. Therefore, they should be used judiciously. Overusing them can lead to unintended consequences.This is because, if used indiscriminately, they can actually degrade performance. Also, excessive use can make your code harder to understand and maintain (you can already see that from even the most basic examples provided above). If dependencies are not managed correctly, useMemo might return outdated values, thereby leading to unexpected behavior.
+
+# Summary
+
+In this lesson, we learnt about a few more hooks and their basic usage. We then went on to state how that over-optimization can end up screwing up an application and cause performance issues.
+
+# Exercise
+
+List out the possible scenarios where you think we could use the hooks we learnt about in this lesson. After this is done, try to implement it into your application and see how they work. Remember to avoid over-engineering and over-optimizing your applications, it never ends well.
