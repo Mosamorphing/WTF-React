@@ -8,7 +8,7 @@ WTF React tutorial helps newcomers get started with React quickly.
 
 ---
 
-As discussed in one of our past lectures, hooks are a game-changer for React development, particularly in the realm of functional components. They allowe developers to manage state, lifecycle methods, and other React features within functional components, previously exclusive to class components.
+As discussed in one of our past lectures, hooks are a game-changer for React development, particularly in the realm of functional components. They allow developers to manage state, lifecycle methods, and other React features within functional components, previously exclusive to class components.
 
 In this lesson, we will consider a few more hooks.
 
@@ -18,9 +18,9 @@ The useRef Hook in React allows you to create a mutable ref object that persists
 
 Here's the basic syntax for using useRef:
 
-import { useRef } from 'react';
-
 ```javascript
+import { useRef } from "react";
+
 function MyComponent() {
   const inputRef = useRef(null);
 
@@ -101,7 +101,7 @@ function ExpensiveComponent({ data }) {
 }
 ```
 
-useMemo and another react hook we will get into in a moment are used to optimize performance in React applications by preventing unnecessary re-renders. For instance, useMemo memoizes the result of a calculation, meaning that it remembers the result of a function and only re-calculates it when the dependencies change. If a calculation is costly, using useMemo can significantly improve performance by avoiding redundant computations.
+In this example, we are making sure that we don't filteredData to be "recalculated" everytime, instead we want it to happen only when data and/or count changes. Whenever the data or count value changes, the useMemo hook re-calculates the filteredData and then updates the component. useMemo and useCallback (another react hook we will get into in a moment) are used to optimize performance in React applications by preventing unnecessary re-renders. For instance, useMemo memoizes the result of a calculation, meaning that it remembers the result of a function and only re-calculates it when the dependencies change. If a calculation is costly, using useMemo can significantly improve performance by avoiding redundant computations.
 
 # 3. useCallback
 
