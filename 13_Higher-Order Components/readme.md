@@ -1,12 +1,10 @@
-# WTF React minimalist tutorial: 10. Higher-Order Components
+# WTF React minimalist tutorial: 13. Higher-Order Components
 
 WTF React tutorial helps newcomers get started with React quickly.
 
 **WTF Academy Community**: [Official Website wtf.academy](https://wtf.academy) | [Discord](https://discord.gg/5akcruXrsk)
 
 **Twitter**: [@WTFAcademy\_](https://twitter.com/WTFAcademy_) | Compiled by [@Mofasasi](https://twitter.com/mofasasi)
-
----
 
 A Higher-Order Component (HOC) is a function that takes a component and returns a new component with enhanced functionality. The function that takes a component, meaning the HOC itself is a function that accepts a component as an argument, making it look something like HigherOrderComponent(OtherComponent). But how does this work? and why do we need it?
 

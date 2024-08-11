@@ -1,4 +1,4 @@
-# WTF React minimalist tutorial: 12. Conditional Rendering
+# WTF React minimalist tutorial: 8. Conditional Rendering
 
 WTF React tutorial helps newcomers get started with React quickly.
 
@@ -74,7 +74,7 @@ const ToggleButton = () => {
 export default ToggleButton;
 ```
 
-![12-1](./img/12-1.png) ![12-2](./img/12-2.png)
+![8-1](./img/8-1.png) ![8-2](./img/8-2.png)
 
 In this example, we used state to keep track of whether the button is on or off, and then went on to conditionally render both the button text and an additional message.
 
@@ -106,7 +106,7 @@ const ConditionalClassExample = () => {
 export default ConditionalClassExample;
 ```
 
-![12-3](./img/12-3.png) ![12-4](./img/12-4.png)
+![8-3](./img/8-3.png) ![8-4](./img/8-4.png)
 
 In the above example, the className "default" serves as a foundation, always present regardless of the the "isActive" state. It is the base styling that remains constant.The conditional part ${isActive ? "active_bg" : "inactive_bg"} acts as a dynamic modifier. It evaluates the isActive state and applies either "active_bg" or "inactive_bg" accordingly. This conditional class complements the base "default" class, allowing us to apply state-specific styling.
 

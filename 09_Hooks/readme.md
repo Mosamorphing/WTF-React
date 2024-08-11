@@ -1,4 +1,4 @@
-# WTF React minimalist tutorial: 8. React Hooks
+# WTF React minimalist tutorial: 9. React Hooks
 
 WTF React tutorial helps newcomers get started with React quickly.
 
@@ -270,8 +270,8 @@ function Index() {
 }
 ```
 
-![8-1](./img/8-1.png)
-![8-2](./img/8-2.png)
+![9-1](./img/9-1.png)
+![9-2](./img/9-2.png)
 
 The Provider component accepts a VALUE prop that is passed to consuming components that are descendants of this Provider. Note that VALUE here passed out a prop should contain all the states and their corresponding setters that you want to use across the application, from anywhere at all. Just as shown above, I created a constant that houses isLoggedIn and setIsLoggedIn, making it available to for anywhere in the whole app.
 

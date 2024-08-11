@@ -1,4 +1,4 @@
-# WTF React minimalist tutorial: 8. React Router
+# WTF React minimalist tutorial: 12. React Router
 
 WTF React tutorial helps newcomers get started with React quickly.
 
@@ -55,9 +55,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 );
 ```
 
-![9-1](./img/9-1.png)
+![12-1](./img/12-1.png)
 
-![9-2](./img/9-2.png)
+![12-2](./img/12-2.png)
 
 By default, the slash signifies the homepage ('/') and all you have pass into the element is the component for homepage that you have created and profilepage, in the case of /profile.
 The RouterProvider that we imported and wrapped inside of Our Render as shown below just implies that we have handed over the entry point into our application to React Router while using the router to define what component is rendered at each url.
@@ -89,10 +89,10 @@ const router = createBrowserRouter([
 ```
 
 Before the error element:
-![9-3](./img/9-3.png)
+![12-3](./img/12-3.png)
 
 After adding the error element:
-![9-4](./img/9-4.png)
+![12-4](./img/12-4.png)
 
 You will add your own component here, not a div (to separate concerns).You should note that it is usually advisable to add a button that leads the user to a page that exists on the platform, usually the homepage. Now to do that, we use LINK from the same library, react router.
 You might be wondering, why not use the html anchor tag (a), the reason is Link does not perform a full page refresh when clicked, compared to anchor tag. You can try both and see that when you use the anchor tag, the page refreshes and then requests the whole html and javascript all over again. Here's how to use Link.
@@ -114,7 +114,7 @@ const router = createBrowserRouter([
 ]);
 ```
 
-![9-5](./img/9-5.png)
+![12-5](./img/12-5.png)
 
 By clicking on that, the user gets to be taken to the homepage or well, the specified page in the "to" attribute. The TO is just to specific where you want the user to be directed to. It works just like href in anchor tag.
 
@@ -168,7 +168,7 @@ const router = createBrowserRouter([
   },
 ```
 
-![9-6](./img/9-6.png)
+![12-6](./img/12-6.png)
 
 With this, clicking on any user's profile and getting our data just got a little bit easier. Reason being that to fetch a single user's data, we mostly would need to pass in an id to an endpoint that fetches the particular user's profile. With the dynamic path implementation we just did, we can get the id on the page without any hassle.
 To do this, you make use of the useParams hook; Here's how to do that;
@@ -191,7 +191,7 @@ export default UserDetails;
 So, for every path that you try to match the page to, it's going to be available. E.g if you go to /profile/28, it is available, if you go to /profile/avshaudgadhadagdgadgad, trust me that too is available. UseParams return the id to us and with that we can perform a fetch action which is a get request to an endpoint hosted somewhere as shown below. This could be done in a useEffect but of course, you can use an external library like react query to make life easier for yourself.
 
 Look at the URL here and see how it matched what was rendered on the UI;
-![9-7](./img/9-7.png)
+![12-7](./img/12-7.png)
 
 ```javascript
 import React, { useState, useEffect } from "react";
