@@ -78,7 +78,7 @@ export default ToggleButton;
 
 In this example, we used state to keep track of whether the button is on or off, and then went on to conditionally render both the button text and an additional message.
 
-Another perfect use case for conditional rendering is when you are trying to fetch some sets of data from an API endpoint, you have to cater for the loading state, error state and then the original component to render if the data come back successfully to the user. Conditional rendering can also be used in classNames such that based on some condition, you can choose to apply a className or not. Here's an example of that;
+Another perfect use case for conditional rendering is when you are trying to fetch some sets of data from an API endpoint, you have to cater for the loading state, error state and then the original component to render if the data returns successfully to the user. Conditional rendering can also be used in classNames such that based on some condition, you can choose to apply a className or not. Here's an example of that;
 
 ```javascript
 import React, { useState } from "react";
