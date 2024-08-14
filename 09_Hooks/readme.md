@@ -1,4 +1,4 @@
-# WTF React minimalist tutorial: 8. React Hooks
+# WTF React minimalist tutorial: 9. React Hooks
 
 WTF React tutorial helps newcomers get started with React quickly.
 
@@ -36,7 +36,7 @@ function MyComponent() {
 
 I am now going to explain what each term above means;
 
--- Side effect, just as the name implies in pain english language is an additional effect that occurs in addition to the main effect of a situation, or simply put, the consequence of an action. You might still be wondering what a consequence of an action means, this means that any code that runs inside a use effect is running because something just happened. A classic example is fetching some data from the backend when you arrive at a particular page in your application. Such data fetching is usually put in a useEffect hook such that it then only runs based on whether you come to that page or not. We will seet it in action in just a bit.
+-- Side effect is the consequence of an action. This means that any code inside a use effect runs because something just happened. A classic example is fetching some data from the backend when you arrive at a particular page in your application. Such data fetching is usually put in a useEffect hook that only runs based on whether you come to that page or not. We will see it in action in just a bit.
 
 -- Dependencies: The dependencies argument in useEffect is an array that allows you to control when the effect should run. It specifies the values that the effect depends on. Here is a simple explanation of how dependencies work in useEffect: 1. If you don't provide the dependencies array, the effect will run after every render. 2. If you provide an empty array [], the effect will run once, after the initial render. 3. If you include values in the dependencies array (e.g., [prop1, state1]), the effect will run after the initial render and whenever any of the dependencies change in subsequent renders.
 
@@ -113,6 +113,36 @@ useEffect(() => {
 }, [id, something, anotherThing, anotherExtraThing]);
 ```
 
+Before we move on from useEffect, there's a concept here that needs to be learnt, and it is called the cleanup function. The cleanup function in React's useEffect hook is used to stop side effects that no longer need to be executed before a component is unmounted. This is done to prevent memory leaks and ensure that the component's behavior is consistent and predictable. Here's a sample usage of the cleanup function.
+
+```javascript
+import { useState, useEffect } from "react";
+
+function Timer() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCount(count + 1);
+    }, 1000);
+
+    //here is the cleanup function
+    return () => {
+      clearInterval(interval);
+    };
+  }, [count]);
+
+  return (
+    <div>
+      <h2>Timer</h2>
+      <p>The count is: {count}</p>
+    </div>
+  );
+}
+```
+
+In more simpler terms, the cleanup function is telling the useEffect hook to "turn off" the timer when it is no longer in such such that we don't end up having needless renders and memory leaks. In the above example, if for instance you set up an interval in the useEffect hook without providing a cleanup function, the interval will continue to run even after the component has been unmounted. This means that the callback function you've defined in the interval will keep getting called, even though the component is no longer visible on the screen. Each time the interval callback function is called, it will try to update the component's state (in this case, the count state). However, since the component has already been unmounted, React will not be able to actually update the UI. Instead, React will try to "re-render" the component, even though it's not visible anymore. These unnecessary re-renders can lead to performance issues in your application, as React has to do extra work to handle these useless updates. It's just like cleaning up your dishes before using them again, that's what the cleanup function does.
+
 # 2. useReducer
 
 The useReducer hook works similarly to the useState hook, but it's more suitable for complex state logic. UseReducer allows you to keep track of multiple pieces of state and handle state changes in a more organized way. It allows you to define a reducer function that encloses your state update logic, making it easier to manage states in your react application. Here is a simple example, similar to the example in lecture 6 on useStates -- the counter example.
@@ -179,7 +209,7 @@ It looks like this:
 ```
 
 This means that we want to increment the count state when we click on this button, and the same can be done for decrement or whetever case you have specified in the reducer function.
-You might be wondering -- and trust me this question is very valid, that why would you want to use reducers rather than state? I agree with you, the useState hook has a very easy syntax and concept as a whole, in comparison to useReducer. However, reducer comes in handy when you have a number of states you want to manage as it makes your code cleaner, organized and easier to maintain.
+You might be wondering -- and trust me this question is very valid, that why would you want to use reducers rather than state? I agree with you, the useState hook has a very easy syntax and concept as a whole, in comparison to useReducer. However, reducer comes in handy when you have many states you want to manage as it makes your code cleaner, organized and easier to maintain.
 
 # 3. useContext
 
@@ -240,8 +270,8 @@ function Index() {
 }
 ```
 
-![8-1](./img/8-1.png)
-![8-2](./img/8-2.png)
+![9-1](./img/9-1.png)
+![9-2](./img/9-2.png)
 
 The Provider component accepts a VALUE prop that is passed to consuming components that are descendants of this Provider. Note that VALUE here passed out a prop should contain all the states and their corresponding setters that you want to use across the application, from anywhere at all. Just as shown above, I created a constant that houses isLoggedIn and setIsLoggedIn, making it available to for anywhere in the whole app.
 
