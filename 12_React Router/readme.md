@@ -21,12 +21,12 @@ npm i react-router-dom
 ```
 
 First, you may need to create a PAGES folder in your src folder. You have to note that this is not a requirement, it is just a way of simplifying our codebase in case someone else has to work with it. Meaning we must have separated concerns into pages, components and so on.
-For example, i go into my src folder and create a folder called pages. Then inside of the pages, i create a file which is going to house te components that i want to render on that particular page in my application.
+For example, I go into my src folder and create a folder called pages. Inside of the pages, I create a file which is going to house the components that I want to render on that particular page in my application.
 For example, the order looks like src > pages > ProfilePage.
 
 Then in your main file or index file (as you choose to call it), do the following;
 
-1. Create a Browser Router and configure our first route. This will enable client side routing for our web app.
+1. Create a Browser Router and configure our first route. This will enable client-side routing for our web app.
 
 ```javascript
 import * as React from "react";
@@ -44,7 +44,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/profile",
-    element: <ProfilePage />, // the element here signifies what i wan to be displayed on the page, this is where the profile Page that we created comes in, right?
+    element: <ProfilePage />, // the element here signifies what I want to be displayed on the page, this is where the profile Page that we created comes in, right?
   },
 ]);
 
@@ -59,7 +59,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 
 ![12-2](./img/12-2.png)
 
-By default, the slash signifies the homepage ('/') and all you have pass into the element is the component for homepage that you have created and profilepage, in the case of /profile.
+By default, the slash signifies the homepage ('/') and all you have passed into the element is the component for the homepage and profilepage that you have created (in the case of /profile).
 The RouterProvider that we imported and wrapped inside of Our Render as shown below just implies that we have handed over the entry point into our application to React Router while using the router to define what component is rendered at each url.
 
 ```javascript
@@ -76,7 +76,7 @@ Side note -- The RouterProvider is built using the Context API that we learnt in
 
 With what we have done above, we have successful created a functioning routing system for our web application. You can go ahead and manually navigate to /profile by changing the URL from / to /profile and see how the profile page is going to show. You can add as many pages as you want, all you have to do is create new objects which take in the path and the element you want to render.
 
-Now you would wonder, what if I manually type in a URL that does not exist e.g i go to /users. This is where errorElement comes in. Typically, you would want to create a 404 page that has been produced by the design team (if there's one, hahaha) and then put it in as the errorElement. All you need to do is change the router as in;
+Now you would wonder, what if I manually type in a URL that does not exist e.g. I go to /users. This is where errorElement comes in. Typically, you would want to create a 404 page that has been produced by the design team (if there's one, hahaha) and then put it in as the errorElement. All you need to do is change the router as in;
 
 ```javascript
 const router = createBrowserRouter([
@@ -94,8 +94,8 @@ Before the error element:
 After adding the error element:
 ![12-4](./img/12-4.png)
 
-You will add your own component here, not a div (to separate concerns).You should note that it is usually advisable to add a button that leads the user to a page that exists on the platform, usually the homepage. Now to do that, we use LINK from the same library, react router.
-You might be wondering, why not use the html anchor tag (a), the reason is Link does not perform a full page refresh when clicked, compared to anchor tag. You can try both and see that when you use the anchor tag, the page refreshes and then requests the whole html and javascript all over again. Here's how to use Link.
+You will add your own component here, not a div (to separate concerns). You should note that it is usually advisable to add a button that leads the user to a page that exists on the platform, usually the homepage. Now to do that, we use LINK from the same library, react router.
+You might be wondering, why not use the HTML anchor tag (a), the reason is Link does not perform a full page refresh when clicked, compared to the anchor tag. You can try both and see that when you use the anchor tag, the page refreshes and then requests the whole HTML and JavaScript all over again. Here's how to use Link.
 
 ```javascript
 import { Link } from "react-router-dom";
@@ -116,7 +116,7 @@ const router = createBrowserRouter([
 
 ![12-5](./img/12-5.png)
 
-By clicking on that, the user gets to be taken to the homepage or well, the specified page in the "to" attribute. The TO is just to specific where you want the user to be directed to. It works just like href in anchor tag.
+By clicking on that, the user gets to be taken to the homepage or well, the specified page in the "to" attribute. The TO is just to specify where you want the user to be directed. It works just like `href` in the anchor tag.
 
 # Dynamic Paths
 
@@ -156,7 +156,7 @@ function ProfilePage() {
 export default ProfilePage;
 ```
 
-Then in main.jsx, we have to create a new route in router which is going to house each particular user's profile.
+Then in main.jsx, we have to create a new route in router which will house each particular user's profile.
 
 ```javascript
 import UserDetails from './pages/UserDetails'
@@ -188,9 +188,9 @@ function UserDetails() {
 export default UserDetails;
 ```
 
-So, for every path that you try to match the page to, it's going to be available. E.g if you go to /profile/28, it is available, if you go to /profile/avshaudgadhadagdgadgad, trust me that too is available. UseParams return the id to us and with that we can perform a fetch action which is a get request to an endpoint hosted somewhere as shown below. This could be done in a useEffect but of course, you can use an external library like react query to make life easier for yourself.
+So, for every path that you try to match the page to, it's going to be available. E.g if you go to /profile/28, it is available, if you go to /profile/avshaudgadhadagdgadgad, trust me that too is available. UseParams returns the id to us and with that, we can perform a fetch action which is a get request to an endpoint hosted somewhere as shown below. This could be done in a useEffect but of course, you can use an external library like react query to make life easier for yourself.
 
-Look at the URL here and see how it matched what was rendered on the UI;
+Look at the URL here and see how it matched what was rendered on the UI;  
 ![12-7](./img/12-7.png)
 
 ```javascript
@@ -244,4 +244,4 @@ In this lesson, we learnt how to create routes, navigate to such routes and also
 
 # Exercise
 
-Replicate these examples without taking a look at the codebase provided. Go ahead to implement another use case for this, take for instance a transactions page that lists various transactions and by clicking on one of them, you get to go to another page where all the details of such transaction is listed. It is going to be fun, trust me.
+Replicate these examples without taking a look at the codebase provided. Try to implement another use case for this; a transactions page that lists various transactions and by clicking on one of them, you're redirected to another page where all the details of the selected transaction are listed. It is going to be fun, trust me.
