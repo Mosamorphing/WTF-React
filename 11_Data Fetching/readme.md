@@ -24,9 +24,9 @@ fetch("https://jsonplaceholder.typicode.com/posts")
   .catch((error) => console.error("Error:", error));
 ```
 
-What we did using the above code is that, we are calling the json placeholder's posts endpoint (which could be any endpoint really) and we then expect to get a response from the endpoint which we then converted into JSON in the second line. We then went on to log our data into the console to see what it looks like so we can then proceed to render it on the UI.
+In the above code, we called the json placeholder's posts endpoint (which could be any endpoint really) and then expected to get a response from the endpoint, which was then converted into JSON in the second line. Afterwards, we logged our data into the console to see what it looked like before proceeding to render it on the UI.
 
-Here's a full example of the fetch api, combined with useEffect to fetch data from an endpoint when the page mounts and then render the data on the frontend.
+Here's a full example of the fetch api, combined with useEffect, to fetch data from an endpoint when the page mounts and then render the data on the frontend.
 
 ```javascript
 import { useState, useEffect } from "react";
@@ -81,7 +81,7 @@ Notice how I put an attribute KEY on the paragraph tag that I returned? The reas
 2. Preventing unexpected behavior: Without unique keys, React may struggle to correctly update elements, which can result in unpredictable UI behavior. For instance, if an item is removed from a list, React might not properly adjust the remaining items, leading to display issues. Unique keys help maintain the integrity of the list during updates.
 3. Unique among siblings: Keys must be unique only among their immediate siblings. This means that while the same key can be reused in different lists, each key within a single list must be distinct to avoid conflicts during updates. For example, we cannot have two different objects in that array with the same ID (because we are using ID as the key in his case), we are going to get a warning in the console saying "Warning: Encountered two children with the same key, `KEY_VALUE`. Keys should be unique so that components maintain their identity across updates.", OR 'Warning: Each child in a list should have a unique "key" prop.
    ' if we didn't pass the key prop at all.
-   All of these is just to emphasize the importance of passing the key prop everytime you map over items in an array.
+   All of these are just to emphasize the importance of passing the key prop everytime you map over items in an array.
 
 The Fetch API has met our basic need in this case. However, fetch doesn't automatically transform JSON data meaning everytime we use the API, we have to first convert our response to JSON before going ahead to use it. This can be quite a hassle in the long-run as we do not want to be duplicating codes unnecessarily.
 Also, it doesn't have built-in support for request cancellation, which has posed challenges for us needing to abort ongoing requests. This limitation stemmed from the nature of JavaScript Promises, as stated earlier that the fetch API uses Promises, which do not support cancellation.
