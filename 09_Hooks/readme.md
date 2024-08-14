@@ -36,7 +36,7 @@ function MyComponent() {
 
 I am now going to explain what each term above means;
 
--- Side effect, just as the name implies in pain english language is an additional effect that occurs in addition to the main effect of a situation, or simply put, the consequence of an action. You might still be wondering what a consequence of an action means, this means that any code that runs inside a use effect is running because something just happened. A classic example is fetching some data from the backend when you arrive at a particular page in your application. Such data fetching is usually put in a useEffect hook such that it then only runs based on whether you come to that page or not. We will see it in action in just a bit.
+-- Simply put, Side effect is the consequence of an action. This means that any code inside a use effect runs because something just happened. A classic example is fetching some data from the backend when you arrive at a particular page in your application. Such data fetching is usually put in a useEffect hook that only runs based on whether you come to that page or not. We will see it in action in just a bit.
 
 -- Dependencies: The dependencies argument in useEffect is an array that allows you to control when the effect should run. It specifies the values that the effect depends on. Here is a simple explanation of how dependencies work in useEffect: 1. If you don't provide the dependencies array, the effect will run after every render. 2. If you provide an empty array [], the effect will run once, after the initial render. 3. If you include values in the dependencies array (e.g., [prop1, state1]), the effect will run after the initial render and whenever any of the dependencies change in subsequent renders.
 
@@ -113,7 +113,7 @@ useEffect(() => {
 }, [id, something, anotherThing, anotherExtraThing]);
 ```
 
-Before we move on from useEffect, there's a concept here that needs to be learnt, and it is called the cleanup function. The cleanup function in React's useEffect hook is used to stop side effects that no longer need to be executed before a component is unmounted. This is done in order to prevent memory leaks and ensure that the component's behavior is consistent and predictable. Here's a sample usage of the cleanup function.
+Before we move on from useEffect, there's a concept here that needs to be learnt, and it is called the cleanup function. The cleanup function in React's useEffect hook is used to stop side effects that no longer need to be executed before a component is unmounted. This is done to prevent memory leaks and ensure that the component's behavior is consistent and predictable. Here's a sample usage of the cleanup function.
 
 ```javascript
 import { useState, useEffect } from "react";
@@ -209,7 +209,7 @@ It looks like this:
 ```
 
 This means that we want to increment the count state when we click on this button, and the same can be done for decrement or whetever case you have specified in the reducer function.
-You might be wondering -- and trust me this question is very valid, that why would you want to use reducers rather than state? I agree with you, the useState hook has a very easy syntax and concept as a whole, in comparison to useReducer. However, reducer comes in handy when you have a number of states you want to manage as it makes your code cleaner, organized and easier to maintain.
+You might be wondering -- and trust me this question is very valid, that why would you want to use reducers rather than state? I agree with you, the useState hook has a very easy syntax and concept as a whole, in comparison to useReducer. However, reducer comes in handy when you have many states you want to manage as it makes your code cleaner, organized and easier to maintain.
 
 # 3. useContext
 
