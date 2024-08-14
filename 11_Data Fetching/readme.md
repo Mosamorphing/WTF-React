@@ -74,8 +74,8 @@ export default Posts;
 
 ![11-1](./img/11-1.png)
 
-The above code fetches data from the endpoint and then maps over each of the post object in the posts array to return a paragraph showing the ID and the title of such post.
-Notice how that I put an attribute KEY on the paragraph tag that I returned? The reasons are not far-fetched, they include:
+The above code fetches data from the endpoint and then maps over each of the post objects in the posts array to return a paragraph showing the ID and the title of such post.
+Notice how I put an attribute KEY on the paragraph tag that I returned? The reasons are not far-fetched, they include:
 
 1. Efficient reconciliation: React uses a process called reconciliation to update the UI when the state of an application changes. By providing unique keys, React can quickly identify which elements have changed and only update those, rather than re-rendering the entire list. This leads to improved performance and resource management.
 2. Preventing unexpected behavior: Without unique keys, React may struggle to correctly update elements, which can result in unpredictable UI behavior. For instance, if an item is removed from a list, React might not properly adjust the remaining items, leading to display issues. Unique keys help maintain the integrity of the list during updates.
@@ -83,7 +83,7 @@ Notice how that I put an attribute KEY on the paragraph tag that I returned? The
    ' if we didn't pass the key prop at all.
    All of these is just to emphasize the importance of passing the key prop everytime you map over items in an array.
 
-The Fetch API has met our basic need in this case. However, fetch doesn't automatically transform JSON data meaning everytime we use the API, we have to first convert our response to JSON before going ahead to use it. This can be quite an hassle in the long-run as we do not want to be duplicating codes unnecessarily.
+The Fetch API has met our basic need in this case. However, fetch doesn't automatically transform JSON data meaning everytime we use the API, we have to first convert our response to JSON before going ahead to use it. This can be quite a hassle in the long-run as we do not want to be duplicating codes unnecessarily.
 Also, it doesn't have built-in support for request cancellation, which has posed challenges for us needing to abort ongoing requests. This limitation stemmed from the nature of JavaScript Promises, as stated earlier that the fetch API uses Promises, which do not support cancellation.
 In addition to the above, error handling is a mess when you are using the fetch API. it is always verbose, as network errors don't reject the promise, trust me you don't want to go down that path of having to handle a lot of cases that could occur regarding errors in your code.
 Thankfully, there's a library that perfectly solves the limitations that face the Fetch API. It is called AXIOS.
@@ -91,7 +91,7 @@ Thankfully, there's a library that perfectly solves the limitations that face th
 ## What is Axios?
 
 Axios is a popular JavaScript library used for making HTTP requests from both the browser and Node.js. It has been designed to be easy to use and provides several advantages over built-in methods like the Fetch API. It is Promise-based, just like the Fetch API, which makes handling asynchronous operations straightforward. It has a simple and intuitive API that's easy for beginners to understand. More importantly, axios automatically transforms JSON data, so you don't need to manually parse responses.
-One of the most important use of axios or we could call it a feature is "the interceptors". These allow you to modify requests or responses before they're handled by then or catch. For example, if a request shows a response code of 401, meaning that the user is not authorized, every other request that has been lined up to follow that will be canceled by the interceptor.
+One of the most important uses of axios or we could call it a feature is "the interceptors". These allow you to modify requests or responses before they're handled by then or catch. For example, if a request shows a response code of 401, meaning that the user is not authorized, every other request that has been lined up to follow that (initial response) will be cancelled by the interceptor.
 
 ## Usage
 
@@ -116,7 +116,7 @@ axios
   });
 ```
 
-Such that, if we replace the former Posts page with this following set of code, we are going to have the same thing;
+Such that, if we replace the former Posts page with the following set of code, we are going to have the same thing;
 
 ```javascript
 import { useState, useEffect } from "react";
@@ -246,5 +246,5 @@ While Fetch API is a powerful built-in tool, axios provides several advantages t
 
 ## Exercise
 
-Understand the above codes and the reason why we are using instances, then go ahead to get your hand dirty by making request to various endpoints that have the same baseURL on different pages in your application. You should go as far as designing the webpage to look very beautiful by adding a loading spinner and maybe a toast that nudges the user in case an error occurs rather than just showing it as texts on the screen.
+Understand the above codes and the reason why we are using instances, then go ahead to get your hands dirty by making request to various endpoints that have the same baseURL on different pages in your application. You should go as far as designing the webpage to look very beautiful by adding a loading spinner and maybe a toast that nudges the user in case an error occurs rather than just showing it as texts on the screen.
 Also, and this is an advice, as you continue to develop your skills, experiment with both Fetch and Axios in various scenarios. This hands-on experience will deepen your understanding and help you leverage these tools effectively in your future work.
