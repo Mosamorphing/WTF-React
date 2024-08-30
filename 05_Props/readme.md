@@ -142,4 +142,4 @@ In this example, the Avatar component expects imageUrl to be a string and size t
 
 Props are a fundamental concept in React that allows you to pass data from one component to another, making your components flexible and reusable. By understanding how to use props, children components, default values, and prop types, you can create robust and maintainable React applications.
 
-Feel free to play around with the code examples and see how changing the props affects the behaviour of your components!
+Feel free to play around with the code, break the examples and see how changing the props affects the behaviour of your components!
