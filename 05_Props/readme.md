@@ -39,7 +39,7 @@ However, you can also pass props to your own components and customize them. For 
 ```javascript
 export default function User() {
   return (
-    <div>
+    <div className="avi-container">
       <Avi
         size={150}
         imageUrl="https://pbs.twimg.com/profile_images/1463080286665666564/ubE1IWCT_400x400.jpg"
