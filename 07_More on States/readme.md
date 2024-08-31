@@ -1,8 +1,8 @@
-Here we will learn how to use state to store a value of an input field, which I believe every app in this world has, whether during authentication or to collect users' data. Enough of the long talks, let us dive into it!
+Here, we'll learn how to use state to store the value of an input field — something every app needs, whether for authentication or collecting user data. Let’s jump right in!
 
 # 1. Import and initialize the state
 
-Just like we in the previous lecture, we have to first import and initialize the state.
+As in the previous lecture, start by importing and initializing the state.
 
 ```javascript
 import { useState } from "react";
@@ -18,12 +18,11 @@ const SimpleForm = () => {
 export default SimpleForm;
 ```
 
-Here we made a state called "form", which has a setter function called "setForm", and the initial values of this form are stored in an object, which has a "firstName" and an "email".
+Here, we created a state called `form`, with a setter function named `setForm`. The initial values for this form are stored in an object, which includes `firstName` and `email`.
 
-# 2. Make a change handler
+# 2. Create a Change Handler
 
-If you are coming from the knowledge of vanilla javascript (which I believe you are), you should know that handling forms can be a pain, or well, maybe for me.
-A change handler helps us manipulate our state better. See it in action here:
+If you’re familiar with vanilla JavaScript, you know that handling forms can be tricky (at least for me). A change handler simplifies managing state changes. Check it out in action here:
 
 ```javascript
 import { useState } from "react";
@@ -68,10 +67,11 @@ export default SimpleForm;
 
 ![7-2](./img/7-2.png)
 
-Relaaaaaaaax! All we did here was:
+Here’s what we just did:
 
-1. Write the change handler such that we are able to track each character that the user puts in using the input field. We did this by first spreading whatever we find inside of the form using the spread operator (...).
-2. Then since we have more than one value to assign (firstName and email), we say, `e.target.name` which is defined in each case as 'firstName' and 'email' respectively, we need to make the key-value pair in this case to then be the name we have in our initial state ( firstName and email) to be the name we have in the input attribute NAME. This means that we are updating our form object this way:
+1. We wrote a change handler to track each character the user types into the input field. We achieved this by spreading the current form values using the spread operator (`...`).
+
+2. Since we have multiple values to manage (`firstName` and `email`), we use `e.target.name`, which corresponds to either `firstName` or `email`, as defined in the input field's `name` attribute. This way, we update our form object accordingly.
 
 ```javascript
 setForm({
@@ -80,21 +80,20 @@ setForm({
 });
 ```
 
-_**Name**_ is an attribute of the input field that identifies the form control. It is used to match the input field with its corresponding property in the state object.
+_**Name**_ is an attribute of the input field that identifies it, linking it to its corresponding property in the state object.
 
-_**value**_ is the current value of the input field. In React, the value of the input field is typically controlled by state, meaning it is derived from the state variable and updated when the state changes, such that the initial value of the `firstNAME` is an empty string and as we press characters, the value gets updated using the setter function `HANDLECHANGE` and then as a result, we have an updated _value_ per time. It ensures that the input field always reflects the current state of the application.
+_**Value**_ represents the current content of the input field. In React, the input value is controlled by state, meaning it’s derived from the state variable and updates as the state changes. For example, the initial value of `firstName` starts as an empty string, and as you type, the value updates through the `handleChange` function, ensuring the input field always reflects the current state.
 
-_**handleChange**_ is an event handler function that is called whenever the value of the input field changes. It updates the state with the new value entered by the user. This function is passed to the onChange event of the input field, allowing it to respond to user input.
+_**handleChange**_ is the event handler function triggered whenever the input field's value changes. It updates the state with the new user input and is assigned to the input field's `onChange` event, enabling real-time updates.
 
-3. We went ahead to console our form to be sure that our code works.
+3. We then logged our form to ensure everything is working correctly.
 
-It is worthy of note that when a React application reloads the page, the state resets to its default values because React is a client-side library. This means that all the JavaScript code, including the React components and their state, runs in the browser after being downloaded from the server. Therefore, on a page reload, React starts fresh, and all state information is lost unless intentionally persisted and rehydrated using techniques like browser storage, server-side rendering, or other state management libraries.
+Note that when a React application reloads, the state resets to its default values because React operates client-side. This means that after a page reload, React restarts with fresh state information unless it’s explicitly persisted and restored using methods like browser storage, server-side rendering, or state management libraries.
 
-Lastly, I want us to touch on updating an array using state as well. This is quite simple and very straightforward.
-Like we have been doing,
+Finally, let’s cover updating an array using state. It’s straightforward:
 
-1. import and initialize the state (You should know how to do that yourself by now)
-2. Make the initial value of the state to be an array, it could be an empty array or an array containing strings, numbers or objects. Here we will keep it simple and use a string.
+1. Import and initialize the state (you should be familiar with this by now).
+2. Set the initial value of the state to an array. This can be an empty array or one with strings, numbers, or objects. For simplicity, we’ll use a string array.
 
 ```javascript
 import { useState } from "react";
@@ -119,9 +118,9 @@ const Example = () => {
 
 ![7-3](./img/7-3.png)
 
-Here, I returned a list of all the fruits in the fruits array using the array method called MAP. By now, you should be familiar with map as you must be coming from the knowledge of vanilla javascript.
+Here, we used the `map` method to return a list of all the fruits in the `fruits` array. By now, you should be comfortable with `map` if you’re familiar with vanilla JavaScript.
 
-Now to update the fruits array, we are going to use our setter function which is setFruits in this case.
+To update the `fruits` array, we use the setter function `setFruits`.
 
 ```javascript
 import { useState } from "react";
@@ -155,9 +154,9 @@ export default Example;
 
 ![7-4](./img/7-4.png)
 
-All that happened here was that I updated the fruits list by adding my own favourite fruit to the list, using the updateFruits function which spreads the initial state of the fruits list and then added my own favourite to the end of the array.
+Here, we updated the `fruits` list by adding our favourite fruit to the array. We did this using the `updateFruits` function, which spreads the existing fruits and appends our favorite fruit to the end of the list.
 
-One more example and surely you will have to use this a lot of times. It is setting boolean using a state and the perfect example of this is a password field where we get to toggle the password field to show or hide the input based on user's preference.
+Another common use of state is handling booleans, like toggling a password field to show or hide the input based on user preference. You’ll find yourself using this technique frequently.
 
 ```javascript
 import { useState } from "react";
@@ -194,16 +193,16 @@ export default SimpleForm;
 
 ![7-7](./img/7-7.png)
 
-In the above example, we had two states, one was for the password and the other one was to track whether the password is shown or not. Whenever we click on SHOW or HIDE, we manipulate the "showField" state to either show the password or not.
-That is what the click action is doing, it takes the current state of showField, then set it to the opposite of it, meaning if it was false, the moment we click on it, it becoemes true -- and vice versa. Then we went on to render the SHOW or HIDE text dynamically depending on the current state of "showField".
+In the example above, we used two states: one for the password value and another for tracking whether the password is visible. When you click "SHOW" or "HIDE," the `showField` state toggles between `true` and `false`. This click action updates the state to the opposite value, and then we render "SHOW" or "HIDE" based on the current `showField` state.
 
-Lastly, to make sure that the field is hidden, there is a type attribute on the input field that supports different values such as text, number, password, email and a few others.
-We then said that whenever we want to keep it hidden, use type "password", otherwise use type "text". Type "text" shows the input field values while type "password" hides it from the user.
-It is quite straightforward but to grasp it fully, you will have to play around with it and see how many scenarios you can come up with.
+To manage visibility, the input field's `type` attribute is set to either "password" or "text". `type="password"` hides the input value, while `type="text"` shows it. This setup allows you to toggle between showing and hiding the password.
+
+It's a straightforward concept, but you'll get a better grasp by experimenting with different scenarios.
 
 # Summary
 
-In this lecture, we examined how to use states to store and update a more complex set of values and also learnt some real-world application of the state hook.
+In this lecture, we explored how to use state to manage and update complex values and learned practical applications of the state hook.
 
 # Exercise
-First, make a form that accepts first name, last name, email, password, and then a field to confirm the password and see how interesting that can be. Then try and setup a list where you can add items to the said list, not just one item this time but two, or even three.
+
+Create a form with fields for first name, last name, email, password, and a password confirmation field. Experiment with it to see how it works. Then, set up a list where you can add multiple items—try adding two or even three items to see how it functions.
