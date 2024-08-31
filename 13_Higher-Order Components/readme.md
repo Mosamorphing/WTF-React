@@ -6,16 +6,13 @@ WTF React tutorial helps newcomers get started with React quickly.
 
 **Twitter**: [@WTFAcademy\_](https://twitter.com/WTFAcademy_) | Compiled by [@Mofasasi](https://twitter.com/mofasasi)
 
-A Higher-Order Component (HOC) is a function that takes a component and returns a new component with enhanced functionality. The function that takes a component, meaning the HOC itself is a function that accepts a component as an argument, making it look something like HigherOrderComponent(OtherComponent). But how does this work? and why do we need it?
+A Higher-Order Component (HOC) is a function that takes a component and returns a new component with added functionality. Essentially, the HOC function accepts a component and produces an enhanced version of it, like `HigherOrderComponent(OtherComponent)`. But how does it work, and why is it useful?
 
-Inside the Higher-Order Component, a new component is created. This new component can add props, state, and other normal component features to the WrappedComponent or "Lower-Order Component" (if you'd permit me to call the other component that name).
+Inside the HOC, a new component is created that can inject additional props, state, and other component features into the "WrappedComponent" (or "Lower-Order Component"). The primary purpose of an HOC is to handle cross-cutting concerns—such as authentication, data fetching, or state management—without duplicating code across various components. For example, to protect access to a dashboard, which requires user authentication, you can use an HOC to manage authorization.
 
-For the most part, the purpose of the Higher-Order Component is to provide cross-cutting or simply put universal or general concerns such as authentication, data fetching, or state management without duplicating code across different components. For example, to have access to a dashboard, it is required that you are an authenticated user and this is done via a successful login. Considering that users can manually access the /dashboard page without logging in, you will see the importance of authorization. Now, to safeguard your dashboard page from being accessed by an unauthorized user, what do you do? You block such access.
-How do you do this without having to duplicate code?
-For instance, you have a dashboard page, a transactions page, a settings page and several other pages you want only authorized access to, you can then check in a useEffect on every page if the user has a token the moment they open the page. If they do, you allow them to proceed, else you send them back to login page. Now, this works but it is not efficient.
-This is a typical example of a use case for a higher-order component.
-How does it work? Let's see in this example:
-we can have a component called AuthenticatedRoute in our application, which guards all protected routes.
+Consider a scenario where users can access the `/dashboard` page without being logged in. To protect this page, you could check for a token in `useEffect` on each page. However, this approach leads to repetitive code.
+
+An HOC can simplify this process. For instance, you can create an `AuthenticatedRoute` component that guards all protected routes.
 
 ```javascript
 import { useNavigate } from "react-router-dom";
@@ -82,12 +79,12 @@ function ProfilePage() {
 export default AuthenticatedRoute(ProfilePage); // we wrapped the page inside of the higer-one component
 ```
 
-So, whenever a clever user tries to manipulate the application by manually setting the URL, if we have wrapped such a page with AuthenticatedRoute, we first get a loading state while fetching the user's info(whether it exists or not) and then an action is taken based on the result, either the page is rendered or the application navigates the user back to the homepage and then they get to perform the normal act of logging in and becoming an authorized user.
+So, when a user tries to manipulate the application by changing the URL, the `AuthenticatedRoute` HOC ensures that a loading state is shown while fetching the user's information. Based on the result, either the page is rendered, or the user is redirected to the homepage to log in and gain authorized access.
 
 # Summary
 
-In this lesson, we learnt about HOC and how it is a very vital and integral part of any application, especially if we are looking to avoid code repetition. The wrapped component acts as the Higher-Order component and then goes ahead to render (as shown in the example).
+In this lesson, we explored Higher-Order Components (HOCs) and their role in avoiding code repetition. The HOC wraps a component to add functionality and handle cross-cutting concerns like authentication, ensuring that protected pages are only accessible to authorized users.
 
 # Exercise
 
-Make something similar to this, but for a user with a particular access. Hardcode a user's list that is an array of objects, the object should have name, id and role. Users with certain roles should not be able to access certain pages. All you need to draw inspiration from is already in the above example. Good luck and see you in the next lesson.
+Create a similar setup but include role-based access. Define a list of users with properties such as name, id, and role. Restrict access to certain pages based on user roles. Use the example provided as inspiration. Good luck!
