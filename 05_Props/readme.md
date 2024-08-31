@@ -64,9 +64,23 @@ Think of Props like a switch you can adjust. They're similar to arguments you pa
 # Passing JSX as children components
 
 In React, when you place elements or components within a JSX tag, the parent component will automatically receive these nested elements or components as a special prop called `children`.
-To illustrate, if you nest an `<Avatar />` component inside a `<Card>` component, like so:
+To illustrate, if you nest an `<Avi />` component inside a `<Card>` component, like so:
 
 ```javascript
+import './App.css';
+
+function Avi({ imageUrl, size }) {
+  return (
+    <img
+      className="avi"
+      src={imageUrl}
+      alt="Avatar"
+      width={size}
+      height={size}
+    />
+  );
+}
+
 function Card({ children }) {
   return (
     <div className="card">
@@ -75,25 +89,32 @@ function Card({ children }) {
   );
 }
 
-function Avatar({ imageUrl }) {
+export default function User() {
   return (
-    <img
-      src={imageUrl}
-      alt="Avatar"
-      className="avatar"
-    />
-  );
-}
-
-export default function Profile() {
-  return (
-    <Card>
-      <Avatar imageUrl="https://example.com/avatar.jpg" />
-    </Card>
+    <div className="avi-container">
+      <Card>
+        <Avi
+          size={150}
+          imageUrl="https://pbs.twimg.com/profile_images/1463080286665666564/ubE1IWCT_400x400.jpg"
+        />
+      </Card>
+      <Card>
+        <Avi
+          size={150}
+          imageUrl="https://pbs.twimg.com/profile_images/1463080286665666564/ubE1IWCT_400x400.jpg"
+        />
+      </Card>
+      <Card>
+        <Avi
+          size={150}
+          imageUrl="https://pbs.twimg.com/profile_images/1463080286665666564/ubE1IWCT_400x400.jpg"
+        />
+      </Card>
+    </div>
   );
 }
 ```
-Here, the Avatar component is passed as children to the Card component. The Card component can then render whatever is passed to it via children. This pattern is particularly useful for creating reusable UI components where the content can vary.
+Here, the Avi component is passed as children to the Card component. The Card component can then render whatever is passed to it via children. This pattern is particularly useful for creating reusable UI components where the content can vary.
 
 # Default Props
 Sometimes, you might want to define default values for props, so that your component behaves correctly even if a particular prop isn't provided. This can be done using the defaultProps property.
@@ -136,6 +157,9 @@ Avatar.propTypes = {
   size: PropTypes.number.isRequired,
 };
 ```
+
+![2-2](./img/5-2.png) 
+
 In this example, the Avatar component expects imageUrl to be a string and size to be a number. If these props are not provided or are of the wrong type, React will log a warning in the console.
 
 # Summary 
