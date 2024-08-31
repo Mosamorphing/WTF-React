@@ -8,15 +8,15 @@ WTF React tutorial helps newcomers get started with React quickly.
 
 ---
 
-As discussed in one of our past lectures, hooks are a game-changer for React development, particularly in the realm of functional components. They allow developers to manage state, lifecycle methods, and other React features within functional components, previously exclusive to class components.
+As we discussed in previous lectures, hooks revolutionize React development, especially for functional components. They enable us to manage state, lifecycle methods, and other React features within functional components, which were previously only accessible in class components.
 
-In this lesson, we will consider a few more hooks.
+In this lesson, we’ll explore a few more hooks.
 
-# 1. useRef
+# 1. `useRef`
 
-The useRef Hook in React allows you to create a mutable ref object that persists throughout the entire lifecycle of a component. Unlike state, the value of a ref object doesn't trigger a re-render when it changes. This makes refs useful for storing values that don't directly affect the UI, but you may still need to access them from within your component.
+The `useRef` hook in React lets you create a mutable ref object that persists throughout the entire lifecycle of a component. Unlike state, changing the value of a ref object doesn’t trigger a re-render of the component. This makes refs ideal for storing values that don’t directly impact the UI but need to be accessed within the component.
 
-Here's the basic syntax for using useRef:
+Here’s the basic syntax for using `useRef`:
 
 ```javascript
 import { useRef } from "react";
@@ -33,10 +33,11 @@ function MyComponent() {
 }
 ```
 
-In this example, we created a ref object called inputRef using useRef(null). We then assigned this ref to the input element using the ref prop. This in turn allowrd us to access the actual DOM element of the input field later in our component. As demonstrated above, useRef can be used to access DOM elements directly. This can be helpful for manually focusing elements, measuring element sizes, or manipulating the DOM in other ways. Another basic usage of the userRef hook, which is an adavantage over the useState hook is that : while state can be used to store values, it triggers a re-render whenever it changes. With useRef, you can store values that don't need to trigger re-renders, such as previous values or references to objects. Also, in some third-party libraries, you might be required to pass a DOM element reference as a prop. useRef can be used to create these references.
+In this example, we created a ref object called `inputRef` using `useRef(null)`. We then assigned this ref to the input element using the `ref` prop. This allows us to directly access the DOM element of the input field later in our component. As shown, `useRef` can be used to access DOM elements directly, which is useful for tasks like manually focusing elements, measuring element sizes, or making other direct manipulations to the DOM.
 
-Take for instance;
+Another advantage of `useRef` over `useState` is that while state updates trigger a re-render of the component, `useRef` allows you to store values that don’t cause re-renders. This makes `useRef` ideal for storing values that need to persist between renders but don’t affect the UI, such as previous values or references to objects. Additionally, third-party libraries often require DOM element references as props, and `useRef` is perfect for creating these references.
 
+For example:
 ```javascript
 import React, { useRef, useEffect } from "react";
 import Chart from "third-party-chart-library"; // This is a dummy library by the way
@@ -60,7 +61,7 @@ function MyChart() {
 export default MyChart;
 ```
 
-But you get the gist, the plan is to be able to initiate a Ref, do whatever you want with the ref and then pass the ref as a prop whenever you need. Also useRef is usable in cases where you want to scrollToTop when something changes. For instance, you may want to scroll to the top of a modal as you switch a multistage modal form for example. Then you can use a function like:
+But you get the gist: the plan is to initiate a ref, perform any necessary operations with it, and then pass the ref as a prop whenever needed. `useRef` is also handy in scenarios where you want to scroll to the top when something changes. For example, you might want to scroll to the top of a modal when switching between different stages of a multi-step form. You can accomplish this with a function like:
 
 ```javascript
 export const handleScrollToTop = (div) => {
@@ -79,12 +80,13 @@ return (
 );
 ```
 
-What we did in the above example was to create a resuable function "handleScrollToTop", which takes an argument div, then we are using on our page when the component mounts. Meaning that, whenever showModal changes, we want the content of the modal to be scrolled to the top, rather than our previous state -- imagine the user scrolled down and then closed the modal, it's a good user experience if they open the modal and it starts from the top again.
+What we did in the above example was to create a reusable function, `handleScrollToTop`, which takes a `div` as an argument. We then use this function on our page when the component mounts. Specifically, whenever `showModal` changes, we want the content of the modal to scroll to the top. This improves user experience by ensuring that the modal starts from the top every time it's opened, rather than retaining the previous scroll position—imagine if the user scrolled down and then closed the modal; reopening it would start at the top, which is usually more intuitive.
 
 # 2. useMemo
 
-useMemo is a React hook that memoizes the result of a calculation. This means it remembers the result of a function and only re-calculates it when the dependencies change. This is useful for optimizing performance when you have expensive calculations that don't need to be re-done on every render.
-Here's a simple useMemo syntax;
+`useMemo` is a React hook that memoizes the result of a calculation. This means it remembers the result of a function and only recalculates it when the dependencies change. This is useful for optimizing performance when dealing with expensive calculations that don't need to be re-computed on every render.
+
+Here's a simple syntax for `useMemo`:
 
 ```javascript
 import { useMemo, useState } from "react";
@@ -101,13 +103,15 @@ function ExpensiveComponent({ data }) {
 }
 ```
 
-In this example, we are making sure that we don't filteredData to be "recalculated" everytime, instead we want it to happen only when data and/or count changes. Whenever the data or count value changes, the useMemo hook re-calculates the filteredData and then updates the component. useMemo and useCallback (another react hook we will get into in a moment) are used to optimize performance in React applications by preventing unnecessary re-renders. For instance, useMemo memoizes the result of a calculation, meaning that it remembers the result of a function and only re-calculates it when the dependencies change. If a calculation is costly, using useMemo can significantly improve performance by avoiding redundant computations.
+In this example, we are ensuring that `filteredData` is not recalculated on every render. Instead, it is recalculated only when `data` or `count` changes. This is achieved using the `useMemo` hook. By memoizing `filteredData`, React avoids recalculating it unnecessarily, thus optimizing performance, especially when dealing with costly computations.
+
+`useMemo` and `useCallback` (which we’ll discuss next) are both used to optimize performance in React applications. While `useMemo` memoizes the result of a calculation, `useCallback` memoizes a callback function. This prevents unnecessary re-renders of components that depend on these values or functions.
 
 # 3. useCallback
 
-useCallback is similar to useMemo but instead of memoizing a value, it memoizes a callback function. This is useful for preventing unnecessary re-renders of child components when passing callback functions as props.
+`useCallback` is similar to `useMemo`, but instead of memoizing a value, it memoizes a callback function. This is useful for preventing unnecessary re-renders of child components that receive the callback function as a prop. 
 
-Here's a simple example;
+Here’s a simple example:
 
 ```javascript
 import { useCallback, useState } from "react";
@@ -127,16 +131,16 @@ function Child({ onClick }) {
 }
 ```
 
-In this example, handleClick is memoized using useCallback. This ensures that the Child component only re-renders when its own props or state changes, not when the parent's state changes. This can improve performance by preventing unnecessary re-renders. Basically, the syntax is more like wrapping your function in a useCallback keyword in a similar way as useEffect. Just like useEffect, it also accepts dependencies and the function is only going to run whenever the dependencies change.
+In this example, `handleClick` is memoized using `useCallback`. This means that the `Child` component will only re-render if its own props or state change, rather than when the parent’s state updates. This can enhance performance by avoiding unnecessary re-renders. Essentially, `useCallback` is used to ensure that a function is not recreated on every render, similar to how `useEffect` works with dependencies. The function inside `useCallback` will only be updated when the specified dependencies change.
 
-useMemo and useCallback are performance optimization tools in React. While both involve memorization, they serve different purposes. useMemo caches the result of a complex calculation, preventing unnecessary re-computations when the result hasn't changed. On the other hand, useCallback caches a function, preventing it from being recreated on every render, which is especially useful when passing functions as props to child components to prevent unnecessary re-renders. Essentially, useMemo is for optimizing values, while useCallback is for optimizing functions.
+Both `useMemo` and `useCallback` are tools for optimizing performance in React. While `useMemo` is used to cache the results of expensive calculations, preventing them from being recalculated unnecessarily, `useCallback` is used to cache functions, preventing them from being recreated on each render. This is particularly useful when passing functions as props to child components, as it helps to avoid unnecessary re-renders. In summary, use `useMemo` for optimizing calculations and `useCallback` for optimizing functions.
 
-However, with the above perks come limitations, which the major one is performance issues. It sounds ironic that, you are trying to avoid performance issues by using these hooks and then run into more perfomance issues by using them. Therefore, they should be used judiciously. Overusing them can lead to unintended consequences.This is because, if used indiscriminately, they can actually degrade performance. Also, excessive use can make your code harder to understand and maintain (you can already see that from even the most basic examples provided above). If dependencies are not managed correctly, useMemo might return outdated values, thereby leading to unexpected behavior.
+However, it’s important to use these hooks wisely. Overusing `useMemo` and `useCallback` can ironically lead to performance issues. This happens because excessive optimization might actually hurt performance, and managing dependencies incorrectly can lead to outdated values or unexpected behaviour. Balancing optimization with simplicity is key to maintaining both performance and code readability.
 
 # Summary
 
-In this lesson, we learnt about a few more hooks and their basic usage. We then went on to state how that over-optimization can end up screwing up an application and cause performance issues.
+In this lesson, we explored additional React hooks and their basic usage. We also discussed how over-optimization can negatively impact performance and lead to more complex code.
 
 # Exercise
 
-List out the possible scenarios where you think we could use the hooks we learnt about in this lesson. After this is done, try to implement it into your application and see how they work. Remember to avoid over-engineering and over-optimizing your applications, it never ends well.
+Identify scenarios in your application where the hooks discussed could be applied. Implement these hooks thoughtfully to see their effects. Remember to avoid over-engineering and excessive optimization, it never ends well.
