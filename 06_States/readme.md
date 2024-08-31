@@ -10,8 +10,9 @@ WTF React tutorial helps newcomers get started with React quickly.
 
 # React States
 
-What is state in React? State is a way to manage and track dynamic data within a component. Simply put, it is a special kind of data that components can maintain and change over time. To make it even more relatable, we have to liken it to vanilla javascript. In vanilla javascript, we usually use Variables which hold values that can be changed.
-Take for instance, you have a count that you want to update from 0 to 1 in response to an event, maybe a click event. You'd typically say:
+What is state in React? State is how you manage and track dynamic data within a component. Think of it as a special kind of data that components can maintain and update over time. To make it relatable, consider how you use variables in vanilla JavaScript. Variables hold values that can be changed.
+
+For example, if you have a count that starts at 0 and you want to update it to 1 when a user clicks a button, you'd typically write something like this:
 
 ```html
 <!DOCTYPE html>
@@ -38,7 +39,7 @@ const increment = () => {
 };
 ```
 
-what the increment function does here is to increase the count by 1 every time it is fired. However, it does not change the UI. To change the UI, you have to update the DOM by:
+The increment function here increases the count by 1 every time it is fired. However, it does not change the UI. To change the UI, you have to update the DOM by:
 
 ```javascript
 document.getElementById(
@@ -47,10 +48,11 @@ document.getElementById(
 document.getElementById("incrementButton").addEventListener("click", increment);
 ```
 
-React state plays a vital role in updating UI components efficiently. It is important however to know that there is the concept of HOOKS in React.
+State in React plays a crucial role in updating UI components efficiently. However, it's important to understand the concept of **Hooks** in React.
 
-Hooks are special functions in React that allow you to use state and other React features in functional components. Before hooks, these features were only available in class components. Hooks make it easier to manage state and side effects in functional components, leading to cleaner and more maintainable code. Note that all hooks start with the reserved word "USE", for example: useState, useEffect, useContext, useContext and so on.
-Here is how it works.
+Hooks are special functions that allow you to use state and other React features in functional components. Before hooks, these features were only available in class components. Hooks make managing state and side effects in functional components easier, resulting in cleaner and more maintainable code. All hooks start with the prefix "use," like `useState`, `useEffect`, `useContext`, and so on. 
+
+Here’s how it works:
 
 # 1. Importing `useState`
 
@@ -60,7 +62,7 @@ In the case of state, we use the useState hook which is the most popular of all 
 import { useState } from "react";
 ```
 
-Note that since React version 17, you no longer need to import React from react in files that use JSX. This means you can directly use JSX without importing React explicitly. If you are using a < 17 version of React, please import React from 'react' alongside useState as follows:
+Starting with React version 17, you no longer need to import React from 'react' in files that use JSX. This means you can directly use JSX without explicitly importing React. However, if you’re using a version of React earlier than 17, you still need to import React alongside `useState` as follows:
 
 ```javascript
 import React, { useState } from "react";
@@ -76,11 +78,13 @@ We can initialize the state (using the count example from above) as follows;
 const [count, setCount] = useState(0);
 ```
 
-Here, we are saying that the initial or default value of count is 0, `count` holds the current state value, while `setCount` is a function to update the state. This means that if we want to increment the value of count (0 as of now), we use `setCount`. Which brings us to the third step.
+Here, we're setting the initial or default value of `count` to 0. The `count` variable holds the current state value, while `setCount` is the function used to update that state. This means if we want to increment the value of `count` (which starts at 0), we’ll use `setCount`. 
 
-# 3. Updating the state
+That brings us to the next step:
 
-This is where we decide what happens when we do something -- the result of an action or event. For instance, if I want to increment the count by 1 everytime I click on an increment button, I am going to do the following;
+### 3. Updating the State
+
+This is where we define what happens in response to an action or event. For example, if we want to increase the count by 1 each time we click an "Increment" button, we would do the following:
 
 ```javascript
 const increment = () => {
@@ -117,15 +121,16 @@ Then we went ahead and clicked the button so we got:
 
 ![6-2](./img/6-2.png)
 
-For everytime we click on the increment button, we see immediately on the screen that the count has increased. Using `setCount` ensures that React knows about the change and re-renders the component. When `setCount` is called, React automatically re-renders the component, updating the displayed count value in the <p> element.
-Just like we update a number in this case, the state setter can manipulate a string, object, and even arrays as well.
+Each time we click the increment button, we instantly see the count increase on the screen. Using `setCount` ensures that React is aware of the change and re-renders the component accordingly. When `setCount` is called, React automatically updates the displayed count value within the `<p>` element by re-rendering the component.
 
-You might be wondering, how this applies in an application that people use in their day-to-day activities, because in reality, no one wants to use an app that just makes them click on a button and then add a number to an existing number. This brings us to a more robust use of state which we will learn in the next lecture.
+Just like we updated a number here, the state setter can also manipulate strings, objects, and even arrays.
+
+You might wonder how this applies to real-world applications because, in reality, no one wants to use an app that simply increases a number with a button click. This brings us to more practical and robust uses of state, which we’ll explore in the next lesson.
 
 # Summary
 
-In this lecture, we learnt what hooks are, what the most-used hook is, and we also examined how to use states to store and update a counter.
+In this lesson, we learnt what hooks are and what the most-used hook is. We also examined how to use states to store and update a counter.
 
 # Exercise
 
-Initiate a state as an empty string, then go ahead to update the state value by setting it to your name. Now go get your hands dirty!
+Start by setting up a state with an empty string. Then, update the state by assigning it to your name. Dive in and get your hands dirty! 
