@@ -114,26 +114,54 @@ export default function User() {
   );
 }
 ```
+![2-2](./img/5-2.png) 
+
 Here, the Avi component is passed as children to the Card component. The Card component can then render whatever is passed to it via children. This pattern is particularly useful for creating reusable UI components where the content can vary.
 
 # Default Props
 Sometimes, you might want to define default values for props, so that your component behaves correctly even if a particular prop isn't provided. This can be done using the defaultProps property.
 
 ```javascript
-function Greeting({ name }) {
-  return <h1>Hello, {name}!</h1>;
-}
-
-Greeting.defaultProps = {
-  name: 'Guest',
+// Setting default props for the Avi component
+Avi.defaultProps = {
+  imageUrl: 'https://pbs.twimg.com/profile_images/1463080286665666564/ubE1IWCT_400x400.jpg',
+  size: 100,
 };
 
-export default function Welcome() {
-  return <Greeting />;
+function Card({ children }) {
+  return (
+    <div className="card">
+      {children}
+    </div>
+  );
+}
+
+export default function User() {
+  return (
+    <div className="avi-container">
+      {/* Using Card with Avi without passing props, will use default props */}
+      <Card>
+        <Avi />
+      </Card>
+      {/* Using Card with Avi and passing custom size, but using default imageUrl */}
+      <Card>
+        <Avi size={120} />
+      </Card>
+      {/* Using Card with Avi and passing both custom size and imageUrl */}
+      <Card>
+        <Avi
+          size={150}
+          imageUrl="https://pbs.twimg.com/profile_images/1463080286665666564/ubE1IWCT_400x400.jpg"
+        />
+      </Card>
+    </div>
+  );
 }
 ```
 
 In the above example, if the name prop is not provided, the Greeting component will use 'Guest' as the default value.
+
+![2-2](./img/5-3.png) 
 
 # Prop Types
 To make your components more robust, you can specify the types of props your component should receive using PropTypes. This helps in catching bugs early by ensuring that the right type of data is passed to your components.
@@ -157,9 +185,6 @@ Avatar.propTypes = {
   size: PropTypes.number.isRequired,
 };
 ```
-
-![2-2](./img/5-2.png) 
-
 In this example, the Avatar component expects imageUrl to be a string and size to be a number. If these props are not provided or are of the wrong type, React will log a warning in the console.
 
 # Summary 
