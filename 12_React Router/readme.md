@@ -244,4 +244,4 @@ In this lesson, we covered how to create routes, navigate between them, and hand
 
 # Exercise
 
-Replicate these examples without referring to the codebase provided. Implement a transactions page that lists various transactions and, upon clicking a transaction, redirects to a page displaying the details of the selected transaction. It will be a fun exercise, trust me.
+Replicate these examples without referring to the codebase provided. Implement a transactions page that lists various transactions and, upon clicking a transaction, redirects to a page displaying the details of the selected transaction. It will be a fun exercise. Good luck!
