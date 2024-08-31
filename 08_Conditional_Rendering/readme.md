@@ -10,7 +10,7 @@ WTF React tutorial helps newcomers get started with React quickly.
 
 # Conditional Rendering
 
-Conditional rendering is a technique that allows you to display different content based on certain conditions. It's similar to using if-else statements in regular JavaScript, but applied within your JSX. There are various methods of conditionally rendering items on your User interface and they include;
+Conditional rendering is a technique that lets you display different content based on specific conditions. It's similar to using if-else statements in regular JavaScript, but it's applied within your JSX. There are several ways to conditionally render items in your user interface, including:
 
 # 1. Using the Ternary Operator
 
@@ -28,12 +28,11 @@ const Greeting = () => {
 export default Greeting;
 ```
 
-In this example, we are checking that if isLoggedIn is true, display "Welcome back!", otherwise show "Please sign in."
-The logic is that, the set of element that follows the "?" is what is to be shown when the condition is true, while the element that follows ":" is to be shown whenever the condition is false. So, read the above statement as if isLoggedIn is TRUE (?), show "Welcome back", but if it is false (":"), show "Please sign in".
+In this example, we're checking if `isLoggedIn` is true. If it is, we display "Welcome back!"; otherwise, we show "Please sign in." The logic works like this: the element that follows the "?" is displayed when the condition is true, while the element after the ":" is shown when the condition is false. So, you can read it as: if `isLoggedIn` is true (?), show "Welcome back!"; but if it's false (":"), show "Please sign in."
 
-# 2. Using Logical AND (&&) Operator
+# 2. Using the Logical AND (&&) Operator
 
-For simpler conditions where you just want to render SOMETHING or NOTHING -- meaning you want to render an element or else, don't render any element in the space provided, then you use the && operator. Here's how it looks;
+For simpler conditions where you want to render something or nothing—meaning you either render an element or leave the space empty—you can use the `&&` operator. Here's how it works:
 
 ```javascript
 const Notification = () => {
@@ -44,7 +43,7 @@ const Notification = () => {
 export default Notification;
 ```
 
-This will only render the paragraph if hasNewMessages is true, otherwise there will be nothing to show on the notification screen.
+This will only render the paragraph if hasNewMessages is true, otherwise, there will be nothing to show on the notification screen.
 
 # 3. Conditional Rendering with State
 
@@ -76,9 +75,9 @@ export default ToggleButton;
 
 ![8-1](./img/8-1.png) ![8-2](./img/8-2.png)
 
-In this example, we used state to keep track of whether the button is on or off, and then went on to conditionally render both the button text and an additional message.
+In this example, we used state to track whether the button is on or off and then conditionally rendered both the button text and an additional message.
 
-Another perfect use case for conditional rendering is when you are trying to fetch some sets of data from an API endpoint, you have to cater for the loading state, error state and then the original component to render if the data returns successfully to the user. Conditional rendering can also be used in classNames such that based on some condition, you can choose to apply a className or not. Here's an example of that;
+Another great use case for conditional rendering is when fetching data from an API. You need to handle the loading state, error state, and then render the original component once the data is successfully retrieved. Conditional rendering can also be applied to `className` attributes, allowing you to dynamically apply a class based on certain conditions. Here's how that might look:
 
 ```javascript
 import React, { useState } from "react";
@@ -108,13 +107,12 @@ export default ConditionalClassExample;
 
 ![8-3](./img/8-3.png) ![8-4](./img/8-4.png)
 
-In the above example, the className "default" serves as a foundation, always present regardless of the the "isActive" state. It is the base styling that remains constant.The conditional part ${isActive ? "active_bg" : "inactive_bg"} acts as a dynamic modifier. It evaluates the isActive state and applies either "active_bg" or "inactive_bg" accordingly. This conditional class complements the base "default" class, allowing us to apply state-specific styling.
+In the example above, the className `"default"` serves as the foundation, always present regardless of the `isActive` state. It provides the base styling that remains constant. The conditional part `${isActive ? "active_bg" : "inactive_bg"}` acts as a dynamic modifier. It checks the `isActive` state and applies either `"active_bg"` or `"inactive_bg"` accordingly. This conditional class complements the base `"default"` class, allowing us to apply state-specific styling.
 
 # Summary
 
-In this lecture, we learned about different methods of conditional rendering in React, including the ternary operator, logical AND operator, as well as how to combine conditional rendering with state.
-Please note that it may not be as basic as this in your project (starting with the exercise), such that after fetching your data from an endpoint for instance, you have to check for if a condition is true or false and then based on that, render your components conditionally.
+In this lecture, we covered various methods of conditional rendering in React, including using the ternary operator, the logical AND operator, and combining conditional rendering with state. Remember, in real projects (starting with the exercise), you might deal with more complex scenarios. For instance, after fetching data from an endpoint, you may need to check if a condition is true or false and then render your components accordingly.
 
 # Exercise
 
-Create a component that displays a list of items. Use conditional rendering to show a message "The list is empty" when there are no items, and show the actual list when there are items. Use the useState hook to manage the list of items.
+Create a component that displays a list of items. Use conditional rendering to show the message "The list is empty" when there are no items and display the actual list when there are items. Use the `useState` hook to manage the list of items.
