@@ -8,18 +8,17 @@ WTF React tutorial helps newcomers get started with React quickly.
 
 ---
 
-# What are hooks?
+# What are Hooks?
 
-React Hooks are functions that let you use state and other React features in functional components. They are like special tools that make it easier to add features to your components without needing complex class components.
-With hooks, you can create awesome components using just functions! If you are familiar with classes, you know that most times they are painful to write, but now that hooks have made life easier, why not try them out?
-Popular react hooks include useState, useEffect, useContext, useReducer, useMemo, useCallback.
-Notice how all the hooks begin with the keyboard "USE". This is the convention in React and when you are writing your own custom hooks -- because you can, make sure to follow the same convention and start with "use" to make it clear that they follow the rules of hooks.
+React Hooks are functions that allow you to use state and other React features in functional components. They are like special tools that simplify adding features to your components without needing complex class components. With Hooks, you can create awesome components using just functions! If you’ve worked with classes before, you know they can sometimes be cumbersome, but with Hooks, everything becomes more streamlined—so why not give them a try?
+
+Some popular React Hooks include `useState`, `useEffect`, `useContext`, `useReducer`, `useMemo`, and `useCallback`. Notice how all Hooks begin with the prefix "use." This is a convention in React, and when creating your own custom Hooks (which you can do), make sure to start with "use" to indicate that they follow the rules of Hooks.
 
 # 1. useEffect
 
-The useEffect hook in React is a powerful tool that allows you to perform side effects in functional components. Side effects refer to any operation that affects something outside the scope of the component, such as fetching data, updating the DOM, or setting up subscriptions or timers.
+The `useEffect` Hook in React is a powerful tool that lets you perform side effects in functional components. Side effects refer to any operations that affect something outside the scope of the component, such as fetching data, updating the DOM, or setting up subscriptions or timers.
 
-At the most basic level, the syntax looks like this;
+At its most basic level, the syntax looks like this:
 
 ```javascript
 import { useEffect } from 'react';
@@ -34,13 +33,16 @@ function MyComponent() {
 }
 ```
 
-I am now going to explain what each term above means;
+Now, let’s break down what each term above means:
 
--- Side effect is the consequence of an action. This means that any code inside a use effect runs because something just happened. A classic example is fetching some data from the backend when you arrive at a particular page in your application. Such data fetching is usually put in a useEffect hook that only runs based on whether you come to that page or not. We will see it in action in just a bit.
+- **Side Effect**: A side effect is the consequence of an action. In the context of `useEffect`, it means that any code inside the `useEffect` hook runs as a result of something happening. A classic example is fetching data from the backend when you navigate to a specific page in your application. This data fetching is typically placed inside a `useEffect` hook, which only runs when you visit that page. We’ll see this in action shortly.
 
--- Dependencies: The dependencies argument in useEffect is an array that allows you to control when the effect should run. It specifies the values that the effect depends on. Here is a simple explanation of how dependencies work in useEffect: 1. If you don't provide the dependencies array, the effect will run after every render. 2. If you provide an empty array [], the effect will run once, after the initial render. 3. If you include values in the dependencies array (e.g., [prop1, state1]), the effect will run after the initial render and whenever any of the dependencies change in subsequent renders.
+- **Dependencies**: The dependencies argument in `useEffect` is an array that lets you control when the effect should run. It specifies the values that the effect relies on. Here’s a simple explanation of how dependencies work in `useEffect`:
+  1. If you don’t provide a dependencies array, the effect will run after every render.
+  2. If you provide an empty array `[]`, the effect will run once, right after the initial render.
+  3. If you include values in the dependencies array (e.g., `[prop1, state1]`), the effect will run after the initial render and whenever any of those dependencies change in subsequent renders.
 
-Keep those in mind and now let's see the above explanation in action.
+Keep these points in mind as we'll now see how they practically work.
 
 ```javascript
 import { useState, useEffect } from "react";
@@ -72,7 +74,7 @@ function Users() {
 export default Users;
 ```
 
-What we did here was just stating that we get the users page, fetch some set of data from the users endpoint and then display them to the client. Since we used an empty dependency, this effect is only going to be seen once when the page is loaded. If we passed in an array of dependencies, it is going to run everytime any of the dependencies change. For example;
+What we did here was simply fetch data from the users' endpoint when the users' page is loaded and displaying it to the client. Since we used an empty dependency array, this effect will only run once when the page loads. If we had passed in an array of dependencies, the effect would run every time any of those dependencies change. For example:
 
 ```javascript
 function User({ id }) {
@@ -95,9 +97,9 @@ function User({ id }) {
 export default User;
 ```
 
-Here, for everytime the id (which was passed here as a prop) changes, the endpoint to fetch the data is going to be called/hit and then it updates user using the setter SETUSER or error (using SETERROR), in case there is an error.
-Please note that it is also going to have run the first time on reaching the page, and then whenever the id changes, not that it only runs when the id changes.
-You might be wondering, what if we have more than one dependency? meaning we want it to run based on two or more actions. Well, that is also possible. It then means that we will have all the dependencies in an array, separated by commas. It is shown as follows;
+Here, each time the `id` (which is passed as a prop) changes, the endpoint to fetch the data will be called, updating the user with the `setUser` setter or setting an error with `setError` if something goes wrong. Keep in mind that this effect will also run the first time the page loads, and then again whenever the `id` changes. It’s not limited to running only when the `id` changes.
+
+You might wonder, what if we have more than one dependency — meaning we want it to run based on two or more actions? That’s entirely possible. In that case, we would list all the dependencies in an array, separated by commas. It would look something like this:
 
 ```javascript
 useEffect(() => {
@@ -113,7 +115,7 @@ useEffect(() => {
 }, [id, something, anotherThing, anotherExtraThing]);
 ```
 
-Before we move on from useEffect, there's a concept here that needs to be learnt, and it is called the cleanup function. The cleanup function in React's useEffect hook is used to stop side effects that no longer need to be executed before a component is unmounted. This is done to prevent memory leaks and ensure that the component's behavior is consistent and predictable. Here's a sample usage of the cleanup function.
+Before we move on from `useEffect`, there's an important concept to cover: the cleanup function. The cleanup function in React’s `useEffect` hook is used to stop side effects that are no longer needed before a component is unmounted. This helps prevent memory leaks and ensures that the component’s behaviour remains consistent and predictable. Here's an example of how to use the cleanup function:
 
 ```javascript
 import { useState, useEffect } from "react";
@@ -141,11 +143,13 @@ function Timer() {
 }
 ```
 
-In more simpler terms, the cleanup function is telling the useEffect hook to "turn off" the timer when it is no longer in such such that we don't end up having needless renders and memory leaks. In the above example, if for instance you set up an interval in the useEffect hook without providing a cleanup function, the interval will continue to run even after the component has been unmounted. This means that the callback function you've defined in the interval will keep getting called, even though the component is no longer visible on the screen. Each time the interval callback function is called, it will try to update the component's state (in this case, the count state). However, since the component has already been unmounted, React will not be able to actually update the UI. Instead, React will try to "re-render" the component, even though it's not visible anymore. These unnecessary re-renders can lead to performance issues in your application, as React has to do extra work to handle these useless updates. It's just like cleaning up your dishes before using them again, that's what the cleanup function does.
+In simpler terms, the cleanup function tells the `useEffect` hook to "turn off" the timer when it's no longer needed, preventing unnecessary renders and memory leaks. In the example above, if you set up an interval in the `useEffect` hook without providing a cleanup function, the interval would continue to run even after the component has been unmounted. This means the callback function defined in the interval would keep getting called, even though the component is no longer visible on the screen.
 
-# 2. useReducer
+Each time the interval callback is called, it would try to update the component's state (in this case, the `count` state). However, since the component is already unmounted, React wouldn't be able to update the UI. Instead, React would attempt to "re-render" the component, even though it's not visible anymore. These unnecessary re-renders can lead to performance issues because React has to handle these redundant updates. It's similar to cleaning up your dishes before using them again—this is exactly what the cleanup function does.
 
-The useReducer hook works similarly to the useState hook, but it's more suitable for complex state logic. UseReducer allows you to keep track of multiple pieces of state and handle state changes in a more organized way. It allows you to define a reducer function that encloses your state update logic, making it easier to manage states in your react application. Here is a simple example, similar to the example in lecture 6 on useStates -- the counter example.
+# 2. `useReducer`
+
+The `useReducer` hook works similarly to the `useState` hook but is more suitable for managing complex state logic. `useReducer` allows you to track multiple pieces of state and handle state changes in a more organized manner. It lets you define a reducer function that encapsulates your state update logic, making state management easier in your React application. Here's a simple example, similar to the counter-example in the useState lesson:
 
 ```javascript
 import { useReducer } from "react";
@@ -184,23 +188,23 @@ function Counter() {
 }
 ```
 
-Here is how it works:
-First, define a reducer function that takes the current state (the initial value -- at first) and an action as arguments, and returns the next state. The reducer should be a pure function.
-Then, call useReducer in your component, passing the reducer function and an initial state value.
-as follows :
+Here’s how it works:
+
+First, define a reducer function that takes the current state (initially set to the starting value) and an action as arguments, and returns the next state. The reducer function should be a pure function.
+
+Next, call `useReducer` in your component, passing the reducer function and the initial state value. It looks like this:
 
 ```javascript
 const [state, dispatch] = useReducer(reducer, { count: 0 });
 ```
 
-It returns an array with two elements: the current state and a dispatch function. This is similar to useState whic returns the state and its setter. As a refresher, this is what I just said means;
+It returns an array with two elements: the current state and a dispatch function. This is similar to `useState`, which returns the state and its setter function. Here's what this means:
 
 ```javascript
 const [counter, setCounter] = useState(0); //but we are not talking about useState so do not mix things up here
 ```
 
-For you to then make an update to the state, you have to use the dispatch function, while passing in the action object which typically has a type property that identifies with the type of action you want to follow the event.
-It looks like this:
+To update the state, you use the `dispatch` function, passing in an action object that typically has a `type` property to identify the action you want to perform. For example:
 
 ```javascript
 <button className="button" onClick={() => dispatch({ type: "increment" })}>
@@ -208,14 +212,16 @@ It looks like this:
 </button>
 ```
 
-This means that we want to increment the count state when we click on this button, and the same can be done for decrement or whetever case you have specified in the reducer function.
-You might be wondering -- and trust me this question is very valid, that why would you want to use reducers rather than state? I agree with you, the useState hook has a very easy syntax and concept as a whole, in comparison to useReducer. However, reducer comes in handy when you have many states you want to manage as it makes your code cleaner, organized and easier to maintain.
+This means that clicking this button will trigger an increment of the `count` state, and you can similarly handle other actions like decrement based on what you’ve defined in your reducer function.
 
-# 3. useContext
+You might be wondering why use `useReducer` instead of `useState`. While `useState` is simpler and easier to understand for basic state management, `useReducer` is particularly useful when managing multiple state values or complex state logic. It helps keep your code organized and easier to maintain by centralizing the state management logic.
 
-Typically, in a complex application, passing props from the grandparent, to the parent, then to the child can be such a daunting task. In fact, it makes life harder for everyone. To solve this issue of prop drilling is where the useContext hook comes in.
-The useContext hook in React is used to read and subscribe to context from your component. It is a part of React's Context API, which allows you to pass data through the component tree without manually passing props down manually through each nested component.
-Imagine a scenario where you want to identify a logged in user throughout your app, whether by reading it or by setting in (during login) you definitely cannot PROP your way out of such OR you want to make an application that support both light and dark modes, it is not advisable to start passing props to identify what the current preference of the user is, therefore you have to use the useContext hook and the good news you do not have to install an external library to use it. Sounds great, right? Let's see an example.
+
+# 3. `useContext`
+
+In a complex application, passing props from a grandparent to a parent to a child can become cumbersome and difficult to manage. This is where the `useContext` hook comes in. The `useContext` hook allows you to read and subscribe to context from your component, which is part of React’s Context API. This API helps you pass data through the component tree without having to manually pass props down through each nested component.
+
+For instance, if you need to manage user authentication status across your entire app or implement a feature like a light/dark mode toggle, passing props for these purposes would be inefficient. Instead, you use the `useContext` hook to simplify data sharing and avoid prop drilling. And the best part? You don’t need any external libraries to use it. Sounds great, right? Let’s look at an example.
 
 ```javascript
 //index.js
@@ -254,11 +260,12 @@ function App() {
 export default Index;
 ```
 
-What we did here;
+Here’s what we did:
 
-1. we created a context by calling createContext outside the components to create a context. It returns a context object that represents the kind of information you can provide or read from components.
-2. To use the values in the context, you must wrap your app in the Context Provider which is a property that you can use to wrap components that need to access the context. In this case, we use AuthContext.Provider which is gotten from the the createContext API such that we then have something like;
+1. We created a context by calling `createContext` outside of the components. This function returns a context object that represents the kind of information you can provide or read from components.
 
+2. To use the values from the context, you need to wrap your app with the Context Provider. This is done by using the `Context.Provider` component, which allows components within its subtree to access the context. In this case, we used `AuthContext.Provider`, which is obtained from the `createContext` API. This results in something like:
+   
 ```javascript
 function Index() {
   const value = { isLoggedIn, setIsLoggedIn };
@@ -273,20 +280,20 @@ function Index() {
 ![9-1](./img/9-1.png)
 ![9-2](./img/9-2.png)
 
-The Provider component accepts a VALUE prop that is passed to consuming components that are descendants of this Provider. Note that VALUE here passed out a prop should contain all the states and their corresponding setters that you want to use across the application, from anywhere at all. Just as shown above, I created a constant that houses isLoggedIn and setIsLoggedIn, making it available to for anywhere in the whole app.
+The `Provider` component accepts a `value` prop, which is passed to consuming components that are descendants of this `Provider`. This `value` prop should include all the states and their corresponding setters that you want to make available throughout your application. For instance, in the example, I created a constant that contains `isLoggedIn` and `setIsLoggedIn`, making these available anywhere in the app.
 
-3. You can now use your state and its setter (isLoggedIn, setIsLoggedIn) anywhere in this app by just importing useContext and AuthContext, then getting the state and setter out of those as indicated below;
+3. To access your state and its setter (e.g., `isLoggedIn`, `setIsLoggedIn`) anywhere in the app, import `useContext` and `AuthContext`. Then, retrieve the state and setter from the context as shown below:
 
 ```javascript
 const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
 ```
 
-This is a much simpler example, a complex one would be a case where user's information is persisted using localStorage for example and then retrieved via some state, say USER which is going to be set using the setter setUser during login. Then the user can be used anywhere in the app by importing the context.
+In more complex scenarios, you might persist user information using `localStorage` and retrieve it via a state, like `USER`, which can be updated using `setUser` during login. This user data can then be accessed anywhere in the app by importing the context.
 
 # Summary
 
-In this lesson, we learnt about the most popular and most used react hooks, one of them we learnt earlier. Please note that these are not all the hooks in React, but these are the ones you will mostly need in your day to day coding using React.
+In this lesson, we explored some of the most popular and commonly used React hooks. While these are not all the hooks available in React, they cover the core hooks you'll frequently use in your development.
 
-# Exercise
+### Exercise
 
-Replicate these examples without taking a look at the codebase provided. Then go out of your way by building an app with all that we have learnt so far up until this stage. Looking at each hook, you should be able to think about where each of them apply in a real world application. If you encounter any problem, remember there are a lot of resources out there.
+Try replicating these examples without referring to the provided codebase. Then, challenge yourself by building an app incorporating everything we’ve covered so far. Consider real-world applications of each hook and how they fit into your project. If you encounter any issues, remember there are plenty of resources available to help you out.
