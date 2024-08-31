@@ -8,25 +8,21 @@ WTF React tutorial helps newcomers get started with React quickly.
 
 ---
 
-Typically in a web application, we need the users to be able to move from one page to the other. To achieve this in a React app, we need to use a library called React Router DOM.
+React Router DOM is a widely-used JavaScript library for managing client-side routing in React applications. It enables the creation of single-page applications (SPAs) with multiple routes, allowing users to navigate between different pages without reloading the entire page. Unlike traditional server-side routing, where the server sends new HTML for each page, client-side routing keeps the initial HTML loaded and updates the content dynamically based on user actions. This method is generally more efficient for modern web applications.
 
-# What is React Router DOM?
-
-React Router DOM is a popular JavaScript library used for handling client-side routing in React applications. It allows you to create single-page applications (SPAs) with multiple routes, enabling users to navigate between different pages without reloading the entire page. Client-side routing is a technique where the browser handles the navigation between different pages within a web application. This approach is different from traditional server-side routing, where the server generates the HTML for each page and sends it to the browser. In client-side routing, the browser loads the initial HTML and then updates the content dynamically based on user interactions. If you will agree with me, I think that this technique is more effective. Let's dive right into it.
-
-Before we get started, install the package using;
+To get started, first install the package using:
 
 ```javascript
 npm i react-router-dom
 ```
 
-First, you may need to create a PAGES folder in your src folder. You have to note that this is not a requirement, it is just a way of simplifying our codebase in case someone else has to work with it. Meaning we must have separated concerns into pages, components and so on.
-For example, I go into my src folder and create a folder called pages. Inside of the pages, I create a file which is going to house the components that I want to render on that particular page in my application.
-For example, the order looks like src > pages > ProfilePage.
+First, create a `PAGES` folder in your `src` directory. This is not mandatory but helps in organizing your codebase, especially for collaborative projects. The idea is to separate concerns into different directories such as `pages`, `components`, etc.
 
-Then in your main file or index file (as you choose to call it), do the following;
+For example, navigate to your `src` folder and create a folder named `pages`. Inside this folder, create files for the components that will be rendered on each page of your application. For instance, the structure might be `src > pages > ProfilePage`.
 
-1. Create a Browser Router and configure our first route. This will enable client-side routing for our web app.
+In your main file or `index` file (as you prefer to name it), follow these steps:
+
+1. Set up a `BrowserRouter` and configure your initial route. This enables client-side routing for your application.
 
 ```javascript
 import * as React from "react";
@@ -59,8 +55,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 
 ![12-2](./img/12-2.png)
 
-By default, the slash signifies the homepage ('/') and all you have passed into the element is the component for the homepage and profilepage that you have created (in the case of /profile).
-The RouterProvider that we imported and wrapped inside of Our Render as shown below just implies that we have handed over the entry point into our application to React Router while using the router to define what component is rendered at each url.
+By default, the slash (`/`) represents the homepage, and you provide the components for different routes, such as the homepage and `ProfilePage` (for `/profile`).
+
+The `RouterProvider`, which we imported and wrapped inside our `Render`, indicates that we have delegated the routing logic to React Router. This setup allows React Router to determine which component should be rendered for each URL.
 
 ```javascript
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -72,11 +69,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 );
 ```
 
-Side note -- The RouterProvider is built using the Context API that we learnt in the last lesson.
+The `RouterProvider` is built using the Context API that we discussed in the last lesson.
 
-With what we have done above, we have successful created a functioning routing system for our web application. You can go ahead and manually navigate to /profile by changing the URL from / to /profile and see how the profile page is going to show. You can add as many pages as you want, all you have to do is create new objects which take in the path and the element you want to render.
+With this setup, you've successfully implemented a routing system for your web application. You can manually navigate to `/profile` by changing the URL and see the profile page. You can add more pages by creating new routes with their respective paths and components.
 
-Now you would wonder, what if I manually type in a URL that does not exist e.g. I go to /users. This is where errorElement comes in. Typically, you would want to create a 404 page that has been produced by the design team (if there's one, hahaha) and then put it in as the errorElement. All you need to do is change the router as in;
+If you manually enter a URL that doesn't exist, such as `/users`, this is where the `errorElement` comes into play. You should create a 404 page (if designed) and specify it as the `errorElement` in the router configuration. Update your router setup like this:
 
 ```javascript
 const router = createBrowserRouter([
@@ -94,8 +91,9 @@ Before the error element:
 After adding the error element:
 ![12-4](./img/12-4.png)
 
-You will add your own component here, not a div (to separate concerns). You should note that it is usually advisable to add a button that leads the user to a page that exists on the platform, usually the homepage. Now to do that, we use LINK from the same library, react router.
-You might be wondering, why not use the HTML anchor tag (a), the reason is Link does not perform a full page refresh when clicked, compared to the anchor tag. You can try both and see that when you use the anchor tag, the page refreshes and then requests the whole HTML and JavaScript all over again. Here's how to use Link.
+You will add your own component here, not a `div` (to separate concerns). It's also advisable to include a button that directs users to a page that exists on the platform, typically the homepage. To achieve this, we use `Link` from the same library, React Router.
+
+You might wonder why not use the HTML anchor tag (`<a>`). The reason is that `Link` does not trigger a full page refresh when clicked, unlike the anchor tag. Using `Link` ensures that only the necessary content is updated without reloading the entire page. Here's how to use `Link`:
 
 ```javascript
 import { Link } from "react-router-dom";
@@ -116,13 +114,15 @@ const router = createBrowserRouter([
 
 ![12-5](./img/12-5.png)
 
-By clicking on that, the user gets to be taken to the homepage or well, the specified page in the "to" attribute. The TO is just to specify where you want the user to be directed. It works just like `href` in the anchor tag.
+By clicking on that, the user will be redirected to the homepage or the specified page in the `to` attribute. The `to` attribute functions similarly to `href` in the anchor tag.
 
 # Dynamic Paths
 
-There are a few times when you may want to render the same view but for different sets of data. A classic example is a profile page which shows a list of users and then by clicking on a particular user, you get to go to another page and using the user's information, you fetch the user's data. How do you do this? How do you know which user's data to fetch per time? This is where the idea of dynamic paths come in.
-Dynamic paths in React Router allow you to create routes that can match any value in a specific segment of the URL. This is achieved by using a colon (:) in the path pattern to indicate a dynamic segment.
-Let us take an example;
+Sometimes, you may need to render the same view for different data sets. For instance, a profile page might display a list of users, and clicking on a user takes you to a detailed view of that user's information. To achieve this, you use dynamic paths.
+
+Dynamic paths in React Router let you create routes that match variable values in a specific segment of the URL. This is done by using a colon (`:`) in the path pattern to represent a dynamic segment. 
+
+Here's an example:
 
 ```javascript
 import { Link } from "react-router-dom";
@@ -156,7 +156,7 @@ function ProfilePage() {
 export default ProfilePage;
 ```
 
-Then in main.jsx, we have to create a new route in router which will house each particular user's profile.
+In `main.jsx`, you need to create a new route in the router to handle each user's profile. This route will use a dynamic path to match individual user profiles based on the user ID.
 
 ```javascript
 import UserDetails from './pages/UserDetails'
@@ -170,8 +170,7 @@ const router = createBrowserRouter([
 
 ![12-6](./img/12-6.png)
 
-With this, clicking on any user's profile and getting our data just got a little bit easier. Reason being that to fetch a single user's data, we mostly would need to pass in an id to an endpoint that fetches the particular user's profile. With the dynamic path implementation we just did, we can get the id on the page without any hassle.
-To do this, you make use of the useParams hook; Here's how to do that;
+With this setup, accessing a user's profile and fetching data specific to that user becomes more straightforward. You can now retrieve the `id` from the URL directly using the `useParams` hook, which simplifies fetching and displaying user-specific data based on the dynamic URL segment.
 
 ```javascript
 //the page that shows detailed user's information and is being linked to.
@@ -188,9 +187,10 @@ function UserDetails() {
 export default UserDetails;
 ```
 
-So, for every path that you try to match the page to, it's going to be available. E.g if you go to /profile/28, it is available, if you go to /profile/avshaudgadhadagdgadgad, trust me that too is available. UseParams returns the id to us and with that, we can perform a fetch action which is a get request to an endpoint hosted somewhere as shown below. This could be done in a useEffect but of course, you can use an external library like react query to make life easier for yourself.
+For every path you try to match, the route will be available. For example, navigating to `/profile/28` or `/profile/avshaudgadhadagdgadgad` will both be valid. The `useParams` hook returns the `id`, which allows you to perform a fetch action, such as a GET request to an endpoint. This can be done using `useEffect`, or you can use an external library like React Query to simplify data fetching and management.
 
 Look at the URL here and see how it matched what was rendered on the UI;  
+
 ![12-7](./img/12-7.png)
 
 ```javascript
@@ -236,12 +236,12 @@ function UserDetails() {
 export default UserDetails;
 ```
 
-This is a typical use case of the dynamic paths in a web application.
+This is a typical use case for dynamic paths in a web application.
 
 # Summary
 
-In this lesson, we learnt how to create routes, navigate to such routes and also how to navigate to dynamic paths. We also touched on why Link is preferred to the anchor tag and lastly, how to use useParams to get an id to fetch data from an endpoint.
+In this lesson, we covered how to create routes, navigate between them, and handle dynamic paths. We discussed why `Link` is preferred over the anchor tag and how to use `useParams` to fetch data based on dynamic segments in the URL.
 
 # Exercise
 
-Replicate these examples without taking a look at the codebase provided. Try to implement another use case for this; a transactions page that lists various transactions and by clicking on one of them, you're redirected to another page where all the details of the selected transaction are listed. It is going to be fun, trust me.
+Replicate these examples without referring to the codebase provided. Implement a transactions page that lists various transactions and, upon clicking a transaction, redirects to a page displaying the details of the selected transaction. It will be a fun exercise, trust me.
