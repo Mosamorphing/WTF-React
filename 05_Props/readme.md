@@ -167,24 +167,52 @@ In the above example, if the name prop is not provided, the Greeting component w
 To make your components more robust, you can specify the types of props your component should receive using PropTypes. This helps in catching bugs early by ensuring that the right type of data is passed to your components.
 
 ```javascript
-import PropTypes from 'prop-types';
+// Define PropTypes for the Avi component
+Avi.propTypes = {
+  imageUrl: PropTypes.string.isRequired,  // imageUrl must be a string and is required
+  size: PropTypes.number.isRequired,      // size must be a number and is required
+};
 
-function Avatar({ imageUrl, size }) {
+function Card({ children }) {
   return (
-    <img
-      src={imageUrl}
-      alt="Avatar"
-      width={size}
-      height={size}
-    />
+    <div className="card">
+      {children}
+    </div>
   );
 }
 
-Avatar.propTypes = {
-  imageUrl: PropTypes.string.isRequired,
-  size: PropTypes.number.isRequired,
+// Define PropTypes for the Card component
+Card.propTypes = {
+  children: PropTypes.node.isRequired,   // children must be a valid React node and is required
 };
+
+export default function User() {
+  return (
+    <div className="avi-container">
+      <Card>
+        <Avi
+          size={150}
+          imageUrl="https://pbs.twimg.com/profile_images/1463080286665666564/ubE1IWCT_400x400.jpg"
+        />
+      </Card>
+      <Card>
+        <Avi
+          size={120}
+          imageUrl="https://pbs.twimg.com/profile_images/1463080286665666564/ubE1IWCT_400x400.jpg"
+        />
+      </Card>
+      <Card>
+        <Avi
+          size={100}
+          imageUrl="https://pbs.twimg.com/profile_images/1463080286665666564/ubE1IWCT_400x400.jpg"
+        />
+      </Card>
+    </div>
+  );
+}
 ```
+![2-2](./img/5-4.png) 
+
 In this example, the Avatar component expects imageUrl to be a string and size to be a number. If these props are not provided or are of the wrong type, React will log a warning in the console.
 
 # Summary 
