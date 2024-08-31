@@ -8,14 +8,15 @@ WTF React tutorial helps newcomers get started with React quickly.
 
 ---
 
-Typically, the data rendered on the frontend to users are gotten from the database somewhere, but because users cannot directly access the database, the data are then sent over the wire from various endpoints that have been provided on the backend. In Javascript, we use the FETCH API to make these requests.
+Typically, the data displayed to users on the frontend comes from a backend database. Since users can't access the database directly, data is transmitted via endpoints provided by the backend. In JavaScript, we use the Fetch API to make these requests.
 
-## What is the fetch API?
+## What is the Fetch API?
 
-The Fetch API is a modern interface for making HTTP requests in web browsers. It provides a more powerful and flexible way to send and receive data compared to older methods like XMLHttpRequest. This API allows us to easily make network requests, handle responses, and deal with data in various formats The fetch API is in-built and therefore natively supported in modern browsers without the need for any external library. Meaning that we can, using just the fetch API, get our data without having to rely on external libraries such as axios. The Fetch API is commonly used for interacting with RESTful APIs, retrieving resources, and sending data to servers.
-Fetch uses Promises, making it easier to handle asynchronous operations and chain multiple requests. It is also worthy of note that the syntax is quite easy and straightforward.
+The Fetch API is a modern interface for making HTTP requests in web browsers. It offers a more robust and flexible method for sending and receiving data compared to older approaches like XMLHttpRequest. The Fetch API simplifies making network requests, handling responses, and processing data in different formats. It is built into modern browsers, so you don’t need any additional libraries to use it. This means you can fetch data using the Fetch API without relying on external libraries like Axios. It's commonly used for interacting with RESTful APIs, retrieving resources, and sending data to servers.
 
-Let's take a look at a basic example of how the fetch API's syntax in use.
+The Fetch API uses Promises, which makes it easier to manage asynchronous operations and chain multiple requests together. Its syntax is straightforward and user-friendly.
+
+Here's a basic example of how to use the Fetch API:
 
 ```javascript
 fetch("https://jsonplaceholder.typicode.com/posts")
@@ -24,9 +25,9 @@ fetch("https://jsonplaceholder.typicode.com/posts")
   .catch((error) => console.error("Error:", error));
 ```
 
-In the above code, we called the json placeholder's posts endpoint (which could be any endpoint really) and then expected to get a response from the endpoint, which was then converted into JSON in the second line. Afterwards, we logged our data into the console to see what it looked like before proceeding to render it on the UI.
+In the code provided, we made a request to the JSON Placeholder's posts endpoint (which could be any endpoint) and anticipated receiving a response. This response was then converted into JSON format in the following line. Finally, we logged the data to the console to examine its structure before rendering it on the user interface.
 
-Here's a full example of the fetch api, combined with useEffect, to fetch data from an endpoint when the page mounts and then render the data on the frontend.
+Here's a complete example demonstrating how to use the Fetch API with `useEffect` to fetch data from an endpoint when the page loads, and then render that data on the frontend.
 
 ```javascript
 import { useState, useEffect } from "react";
@@ -74,28 +75,27 @@ export default Posts;
 
 ![11-1](./img/11-1.png)
 
-The above code fetches data from the endpoint and then maps over each of the post objects in the posts array to return a paragraph showing the ID and the title of such post.
-Notice how I put an attribute KEY on the paragraph tag that I returned? The reasons are not far-fetched, they include:
+The above code fetches data from the endpoint and maps over each post object in the posts array to display a paragraph showing the ID and title of each post. Notice the `key` attribute on the paragraph tag? Here’s why it's important:
 
-1. Efficient reconciliation: React uses a process called reconciliation to update the UI when the state of an application changes. By providing unique keys, React can quickly identify which elements have changed and only update those, rather than re-rendering the entire list. This leads to improved performance and resource management.
-2. Preventing unexpected behavior: Without unique keys, React may struggle to correctly update elements, which can result in unpredictable UI behavior. For instance, if an item is removed from a list, React might not properly adjust the remaining items, leading to display issues. Unique keys help maintain the integrity of the list during updates.
-3. Unique among siblings: Keys must be unique only among their immediate siblings. This means that while the same key can be reused in different lists, each key within a single list must be distinct to avoid conflicts during updates. For example, we cannot have two different objects in that array with the same ID (because we are using ID as the key in his case), we are going to get a warning in the console saying "Warning: Encountered two children with the same key, `KEY_VALUE`. Keys should be unique so that components maintain their identity across updates.", OR 'Warning: Each child in a list should have a unique "key" prop.
-   ' if we didn't pass the key prop at all.
-   All of these are just to emphasize the importance of passing the key prop everytime you map over items in an array.
+1. **Efficient Reconciliation**: React uses reconciliation to update the UI when the state changes. Providing unique keys helps React quickly identify which elements have changed, improving performance by updating only those elements instead of re-rendering the entire list.
 
-The Fetch API has met our basic need in this case. However, fetch doesn't automatically transform JSON data meaning everytime we use the API, we have to first convert our response to JSON before going ahead to use it. This can be quite a hassle in the long-run as we do not want to be duplicating codes unnecessarily.
-Also, it doesn't have built-in support for request cancellation, which has posed challenges for us needing to abort ongoing requests. This limitation stemmed from the nature of JavaScript Promises, as stated earlier that the fetch API uses Promises, which do not support cancellation.
-In addition to the above, error handling is a mess when you are using the fetch API. it is always verbose, as network errors don't reject the promise, trust me you don't want to go down that path of having to handle a lot of cases that could occur regarding errors in your code.
-Thankfully, there's a library that perfectly solves the limitations that face the Fetch API. It is called AXIOS.
+2. **Preventing Unexpected Behavior**: Without unique keys, React may struggle to update elements correctly, leading to unpredictable UI behavior. For example, if an item is removed, React might not adjust the remaining items properly. Unique keys maintain list integrity during updates.
+
+3. **Unique Among Siblings**: Keys must be unique only among immediate siblings. While keys can be reused in different lists, each key in a single list must be distinct to avoid conflicts. For example, if two objects have the same ID, you’ll get a warning in the console about duplicate keys. Not passing the key prop at all also triggers warnings.
+
+The Fetch API addresses our basic needs but has limitations: it doesn't automatically transform JSON data, requiring us to manually convert responses each time. Additionally, it lacks built-in support for request cancellation, posing challenges for aborting ongoing requests. Error handling is also verbose, as network errors do not reject promises.
+
+Fortunately, Axios is a library that addresses these limitations and provides a more robust solution.
 
 ## What is Axios?
 
-Axios is a popular JavaScript library used for making HTTP requests from both the browser and Node.js. It has been designed to be easy to use and provides several advantages over built-in methods like the Fetch API. It is Promise-based, just like the Fetch API, which makes handling asynchronous operations straightforward. It has a simple and intuitive API that's easy for beginners to understand. More importantly, axios automatically transforms JSON data, so you don't need to manually parse responses.
-One of the most important uses of axios or we could call it a feature is "the interceptors". These allow you to modify requests or responses before they're handled by then or catch. For example, if a request shows a response code of 401, meaning that the user is not authorized, every other request that has been lined up to follow that (initial response) will be cancelled by the interceptor.
+Axios is a popular JavaScript library for making HTTP requests from both browsers and Node.js. It’s designed to be user-friendly and offers several advantages over built-in methods like the Fetch API. Axios is Promise-based, making asynchronous operations straightforward. Its simple and intuitive API is easy for beginners to use. Importantly, Axios automatically transforms JSON data, eliminating the need for manual parsing of responses.
+
+A key feature of Axios is **interceptors**, which allow you to modify requests or responses before they’re processed by `then` or `catch`. For example, if a request returns a 401 response code indicating that the user is unauthorized, the interceptor can cancel any subsequent requests that follow.
 
 ## Usage
 
-To use axios, you first have to install it, as it is an external library. This is done by running the following in the terminal;
+To use Axios, you first need to install it, as it is an external library. Install it by running the following command in the terminal:
 
 ```javascript
 npm i axios
@@ -159,9 +159,7 @@ const Posts = () => {
 export default Posts;
 ```
 
-The difference then is that this is more efficient than the one we had earlier. Even though this can also be optimized to perform better, which brings us to using instances.
-Axios instances are custom configurations of the Axios HTTP client that allow us to create reusable settings for making HTTP requests. It enhances code maintainability and consistency, especially when interacting with multiple APIs or endpoints that require specific configurations.
-For example: you can create a file called api.js and then have an axios instance in there as follows:
+The difference is that this approach is more efficient than the previous one. Although it can also be further optimized, which leads us to using instances. Axios instances are custom configurations of the Axios HTTP client that allow you to set reusable settings for making HTTP requests. This improves code maintainability and consistency, especially when working with multiple APIs or endpoints that require specific configurations. For example, you can create a file named `api.js` and configure an Axios instance as follows:
 
 ```javascript
 import axios from "axios";
@@ -198,7 +196,7 @@ api.interceptors.response.use(
 );
 ```
 
-We can then have our posts page to look like we are calling the api here to get some data from the baseURL provided here. Typically, the baseURL is going to be the server that you hit everytime you send a request and then all you have to do is pass the particular route you want to hit as follows:
+We can then set up our posts page to use the Axios instance to fetch data from the `baseURL` provided. Typically, the `baseURL` represents the server you access each time you send a request, and you only need to specify the specific route you want to hit as follows:
 
 ```javascript
 import { useState, useEffect } from "react";
@@ -238,13 +236,12 @@ const Posts = () => {
 export default Posts;
 ```
 
-This way, we have a resuable api to call without having to rewrite codes that we could do away with. This makes life way easier for us and makes us write resuable and optimized code which can be maintained properly in the long-run.
+This approach allows us to create a reusable API configuration without duplicating code. It simplifies development, leading to more maintainable and optimized code in the long run.
 
 ## Summary
 
-While Fetch API is a powerful built-in tool, axios provides several advantages that can make development easier and more efficient, especially in larger applications. Its features like automatic transforms, better error handling, and interceptors can lead to cleaner and more maintainable code.
+While the Fetch API is a robust built-in tool, Axios offers several advantages that can enhance development efficiency, particularly in larger applications. Features like automatic JSON transformation, improved error handling, and interceptors contribute to cleaner and more maintainable code.
 
 ## Exercise
 
-Understand the above codes and the reason why we are using instances, then go ahead to get your hands dirty by making request to various endpoints that have the same baseURL on different pages in your application. You should go as far as designing the webpage to look very beautiful by adding a loading spinner and maybe a toast that nudges the user in case an error occurs rather than just showing it as texts on the screen.
-Also, and this is an advice, as you continue to develop your skills, experiment with both Fetch and Axios in various scenarios. This hands-on experience will deepen your understanding and help you leverage these tools effectively in your future work.
+Understand the provided code and the purpose of using instances, then experiment by making requests to various endpoints with the same `baseURL` across different pages in your application. Enhance your webpage with features such as a loading spinner and error toasts to improve user experience. Additionally, as you advance your skills, try using both Fetch and Axios in different scenarios to deepen your understanding and effectively apply these tools in future projects.
