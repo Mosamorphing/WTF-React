@@ -33,3 +33,76 @@ Walke 的原型最初被称为“FaxJS”，灵感来源于 Facebook 的 XHP，�
 完善的生态系统：React由一个充满活力的社区支持，并拥有广泛的库、工具和框架生态系统。开发人员可以利用大量资源、教程和包，加快开发速度，提高开发效率。
 
 市场需求量大：React是前端开发中最受欢迎的技术之一，市场需求量很大。掌握React技能的开发人员在公司中备受青睐，拥有众多工作机会和高薪潜力。
+
+## 开发工具
+
+[VS Code](https://code.visualstudio.com/) 是目前最受欢迎的代码编辑器之一。它非常灵活，用户可以添加 JSX 和 TypeScript 支持、语法高亮、自动补全等功能。
+
+其他受欢迎的 React 开发工具还有 [WebStorm](https://www.jetbrains.com/webstorm/)、[Sublime Text](https://www.sublimetext.com/)、[Code Pen](https://codepen.io) 和 [Vim](https://www.vim.org/)。每款工具都有其独特的特点，能够帮助高效开发 JavaScript。
+
+# 使用 [Code Pen](https://codepen.io) 进行演示
+
+```javascript
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+<script>
+  const hello = React.createElement("h1", {}, "Hello React");
+  ReactDOM.render(hello, document.getElementById("root"));
+ </script>
+```
+![1-1](./img/1-3.png) 
+
+通过在 CodePen 的 JS 设置中添加脚本，我们可以使代码更加简洁，从而获得更好的编码体验。
+
+```javascript
+<div id="root"></div>
+const hello = React.createElement("h1", {}, "Hello React");
+  ReactDOM.render(hello, document.getElementById("root"));
+```
+![1-1](./img/1-6.png) 
+
+在接下来的步骤中，我们将使用 VS Code，但首先，你需要在电脑上安装 [Node.js](https://nodejs.org/zh-cn/download/)，这样才能确保后续的安装命令正常运行。
+
+# 安装步骤
+
+1. 打开终端，在电脑的某个文件夹内安装 Vite。（注意：这里我们把文件夹命名为 `wtf-react`）
+```
+npm create vite@latest wtf-react
+```
+2. 选择使用 `React` 框架
+3. 选择 `JavaScript` 的变体
+
+![1-1](./img/1-1.png)
+
+4. 打开刚创建的新文件夹
+```
+cd wtf-react
+```
+
+5. 如何在VSCode中打开文件夹
+```
+code .
+```
+![1-1](./img/1-2.png)
+
+6. Open your VS Code terminal and install the dependencies
+```
+npm install
+```
+
+7. Open up local host to preview your code
+```
+npm run dev
+```
+![1-1](./img/1-4.png)
+
+复制并粘贴本地主机链接到浏览器中，您会看到以下页面: 
+
+![1-1](./img/1-5.png)
+
+# 概要
+
+在第一节课中，我们先介绍了React是什么以及学习它的理由。随后，我们讲解了React的开发工具，并在一个在线网页编辑器中编写了我们的第一段React代码“Hello React”。最后，我们在VS Code中设置了开发环境。接下来，让我们继续我们的React学习之旅！
