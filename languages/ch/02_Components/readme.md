@@ -27,8 +27,6 @@ function Contributors () {
 }
 ```
 
-### 重新翻译
-
 1. `function` 前缀用于定义组件。例如，上述组件定义为 `Contributors`。
 
 2. React 的 JSX 语法结合了 HTML 标签的简洁性和 JavaScript，使您能够轻松创建组件，例如包含属性的 `<img />` 标签。
