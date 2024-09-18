@@ -1,0 +1,29 @@
+* {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+.avi-container {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+}
+
+.avi {
+    border-radius: 100%;
+    border: 1px solid black;
+}
+
+.card {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    display: inline-block;
+}
+
+.avatar {
+    border-radius: 100%;
+    border: 1px solid black;
+    width: 100px;
+    height: 100px;
+}
