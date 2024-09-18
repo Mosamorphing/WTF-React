@@ -1,4 +1,3 @@
-<After Translation>
 # WTF React 极简教程：13. 高阶组件（HOC）
 
 WTF React 教程旨在帮助新手快速入门 React。
