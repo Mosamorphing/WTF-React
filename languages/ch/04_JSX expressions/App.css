@@ -1,0 +1,28 @@
+* {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+h1 {
+  margin: 20px 10px;
+  font-size: 30px;
+  /*font-family: 'Times New Roman', Times, serif;*/
+  font-weight: bold;
+}
+
+.photo {
+  margin: 10px 10px;
+}
+
+ul {
+  margin: 20px 10px;
+}
+
+img {
+  width: 220px; /* Adjust the width to your desired size */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.avi {
+  border-radius: 50%;
+  height: auto;
+}
